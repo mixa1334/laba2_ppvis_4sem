@@ -15,14 +15,14 @@ import java.util.ArrayList;
 public class StudentSAX {
     private static ArrayList<Student> students;
 
-    public static ArrayList<Student> readStudents(File file) throws ParserConfigurationException, SAXException, IOException {
+    public static ArrayList<Student> readStudents(File file) throws ParserConfigurationException, SAXException, IOException, NumberFormatException {
         DefaultHandler handler = new DefaultHandler() {
             private Student student;
             private String field;
 
             @Override
             public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
-                if (qName.equalsIgnoreCase("student")) {
+                if (qName.equalsIgnoreCase(Student.class.getSimpleName())) {
                     student = new Student();
                 }
                 field = qName;
@@ -34,11 +34,7 @@ public class StudentSAX {
                     Field fieldToWrite = Student.class.getDeclaredField(field);
                     fieldToWrite.setAccessible(true);
                     if (fieldToWrite.getType() == int.class) {
-                        try {
-                            fieldToWrite.setInt(student, Integer.parseInt(String.copyValueOf(ch, start, length)));
-                        } catch (Exception e) {
-                            fieldToWrite.setInt(student, 0);
-                        }
+                        fieldToWrite.setInt(student, Integer.parseInt(String.copyValueOf(ch, start, length)));
                     } else {
                         fieldToWrite.set(student, String.copyValueOf(ch, start, length));
                     }
@@ -48,7 +44,7 @@ public class StudentSAX {
 
             @Override
             public void endElement(String uri, String localName, String qName) throws SAXException {
-                if (qName.equalsIgnoreCase("student")) {
+                if (qName.equalsIgnoreCase(Student.class.getSimpleName())) {
                     students.add(student);
                 }
                 field = "";

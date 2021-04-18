@@ -32,7 +32,7 @@ public class StudentsTable extends JPanel {
         table.setModel(tableModel);
 
         JScrollPane scrollPane = new JScrollPane(table);
-        scrollPane.setPreferredSize(new Dimension(800, 500));
+        scrollPane.setPreferredSize(new Dimension(800, 300));
 
         setLayout(new BorderLayout());
         add(scrollPane, BorderLayout.CENTER);
@@ -75,43 +75,45 @@ public class StudentsTable extends JPanel {
     }
 
     private ArrayList<Student> getStudentsToDisplay() {
-        return new ArrayList<>(students.subList((currentPageNumber - 1) * 10, Math.min(currentPageNumber * 10, students.size())));
+        return new ArrayList<>(students.subList(
+                (currentPageNumber - 1) * notesPerPage,
+                Math.min(currentPageNumber * notesPerPage, students.size())
+        ));
     }
 
     private void addButtonsAndLabels() {
         JPanel pageControllerPanel = new JPanel();
-        JButton nextButton = new JButton(">");
-        JButton lastPage = new JButton(">>");
-        JButton firstPage = new JButton("<<");
-        JButton previousButton = new JButton("<");
+        JButton nextPageButton = new JButton(">");
+        JButton lastPageButton = new JButton(">>");
+        JButton firstPageButton = new JButton("<<");
+        JButton previousPageButton = new JButton("<");
 
-        nextButton.addActionListener(e -> {
+        nextPageButton.addActionListener(e -> {
             if (currentPageNumber < allPagesCount) {
                 currentPageNumber++;
                 displayPage();
             }
-
         });
-        previousButton.addActionListener(e -> {
+        previousPageButton.addActionListener(e -> {
             if (currentPageNumber > 1) {
                 currentPageNumber--;
                 displayPage();
             }
         });
-        lastPage.addActionListener(e -> {
+        lastPageButton.addActionListener(e -> {
             currentPageNumber = allPagesCount;
             displayPage();
         });
-        firstPage.addActionListener(e -> {
+        firstPageButton.addActionListener(e -> {
             currentPageNumber = 1;
             displayPage();
         });
 
-        pageControllerPanel.add(firstPage);
-        pageControllerPanel.add(previousButton);
+        pageControllerPanel.add(firstPageButton);
+        pageControllerPanel.add(previousPageButton);
         pageControllerPanel.add(numberOfCurrentPageLabel);
-        pageControllerPanel.add(nextButton);
-        pageControllerPanel.add(lastPage);
+        pageControllerPanel.add(nextPageButton);
+        pageControllerPanel.add(lastPageButton);
         pageControllerPanel.add(countOfStudentsLabel);
         add(pageControllerPanel, BorderLayout.SOUTH);
     }
