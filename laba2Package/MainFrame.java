@@ -8,27 +8,19 @@ public class MainFrame extends JFrame {
     public MainFrame(ArrayList<Student> students) {
         setLayout(new BorderLayout());
         setBounds(100, 100, 1000, 600);
-        StudentsTable st = new StudentsTable(students);
+        StudentsTable st = new StudentsTable();
         add(st, BorderLayout.CENTER);
-
-
-        JPanel jp = new JPanel();
-
-
-        JButton change = new JButton("change");
-        change.addActionListener(e -> {
-            st.setNotesPerPage(3);
-        });
-        JButton back = new JButton("back");
-        back.addActionListener(e -> {
-            st.setNotesPerPage(10);
-        });
-
-        jp.add(change);
-        jp.add(back);
-        add(jp, BorderLayout.SOUTH);
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
+
+    class MyDialog extends JDialog {
+        public MyDialog(JFrame jFrame) {
+            super(jFrame, "Title", true);
+            add(new JTextField(), BorderLayout.NORTH);
+            add(new JButton("button"), BorderLayout.SOUTH);
+            setBounds(500, 500, 250, 250);
+        }
+    }
 }

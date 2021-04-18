@@ -50,7 +50,7 @@ public class StudentDOM {
         root.appendChild(studentElement);
     }
 
-    private static void updateXML(Document document, File file) throws TransformerException, FileNotFoundException {
+    private static void updateXML(Document document, File file) throws TransformerException {
         Transformer transformer = TransformerFactory.newInstance().newTransformer();
         transformer.setOutputProperty(OutputKeys.INDENT, "yes");
         DOMSource domSource = new DOMSource(document);

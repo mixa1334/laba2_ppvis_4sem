@@ -21,7 +21,7 @@ public class StudentSAX {
             private String field;
 
             @Override
-            public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
+            public void startElement(String uri, String localName, String qName, Attributes attributes) {
                 if (qName.equalsIgnoreCase(Student.class.getSimpleName())) {
                     student = new Student();
                 }
@@ -29,7 +29,8 @@ public class StudentSAX {
             }
 
             @Override
-            public void characters(char ch[], int start, int length) throws SAXException {
+            public void characters(char[] ch, int start, int length) {
+                if (student == null) return;
                 try {
                     Field fieldToWrite = Student.class.getDeclaredField(field);
                     fieldToWrite.setAccessible(true);
@@ -43,9 +44,10 @@ public class StudentSAX {
             }
 
             @Override
-            public void endElement(String uri, String localName, String qName) throws SAXException {
+            public void endElement(String uri, String localName, String qName) {
                 if (qName.equalsIgnoreCase(Student.class.getSimpleName())) {
                     students.add(student);
+                    student = null;
                 }
                 field = "";
             }
