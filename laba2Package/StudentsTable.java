@@ -3,6 +3,8 @@ package laba2Package;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 public class StudentsTable extends JPanel {
@@ -10,7 +12,11 @@ public class StudentsTable extends JPanel {
     private final DefaultTableModel tableModel;
     private final JLabel numberOfCurrentPageLabel;
     private final JLabel countOfStudentsLabel;
-    private final JLabel notesPerPageLAbel;
+    private final JButton nextPageButton;
+    private final JButton lastPageButton;
+    private final JButton firstPageButton;
+    private final JButton previousPageButton;
+    private final JComboBox<NotesPerPageEnum> notesPerPageJComboBox;
     private ArrayList<Student> students;
     private int currentPageNumber;
     private int notesPerPage;
@@ -20,53 +26,73 @@ public class StudentsTable extends JPanel {
         this.students = new ArrayList<>();
         numberOfCurrentPageLabel = new JLabel();
         countOfStudentsLabel = new JLabel();
-        notesPerPageLAbel = new JLabel();
-        JTable table = new JTable();
+        JLabel notesPerPageLAbel = new JLabel();
+        JPanel downPanel = new JPanel();
+        JPanel upPanel = new JPanel();
+        nextPageButton = new JButton(">");
+        lastPageButton = new JButton(">>");
+        firstPageButton = new JButton("<<");
+        previousPageButton = new JButton("<");
+        JTable jTable = new JTable();
+
+        notesPerPageJComboBox = new JComboBox(NotesPerPageEnum.values());
+
         String[] columnNames = {"ФИО", "Курс",
                 "группа", "Общее число работ", "Количество выполненных работ",
                 "Язык программирования"};
 
-        notesPerPage = 10;
-        setPageNumberAndCountOfOPages();
+        notesPerPageLAbel.setText("Display students on page  - ");
+        countOfStudentsLabel.setText("Number of all students : " + students.size());
+        numberOfCurrentPageLabel.setText(currentPageNumber + "/" + allPagesCount);
+
+        notesPerPage = 5;
 
         tableModel = new DefaultTableModel();
         tableModel.setColumnIdentifiers(columnNames);
-        table.setModel(tableModel);
+        jTable.setModel(tableModel);
 
-        JScrollPane scrollPane = new JScrollPane(table);
+        JScrollPane scrollPane = new JScrollPane(jTable);
         scrollPane.setPreferredSize(new Dimension(800, 300));
 
         setLayout(new BorderLayout());
+        downPanel.add(firstPageButton);
+        downPanel.add(previousPageButton);
+        downPanel.add(numberOfCurrentPageLabel);
+        downPanel.add(nextPageButton);
+        downPanel.add(lastPageButton);
+        upPanel.add(notesPerPageLAbel);
+        upPanel.add(notesPerPageJComboBox);
+        upPanel.add(countOfStudentsLabel);
         add(scrollPane, BorderLayout.CENTER);
-        initButtonsAndLabels();
+        add(downPanel, BorderLayout.SOUTH);
+        add(upPanel, BorderLayout.NORTH);
+
+        resetPageView();
+        initActions();
     }
 
-    public void setStudents(ArrayList<Student> students) throws StudentsTableException {
-        if (students == null || students.size() == 0)
-            throw new StudentsTableException("Невозможно загрузить список студентов, т.к. он пуст!");
+    public void setStudentsToDisplay(ArrayList<Student> students) throws StudentsTableException {
+        if (students == null)
+            throw new StudentsTableException("Cant display NULL List of student");
         this.students = students;
-        setPageNumberAndCountOfOPages();
-        displayPage();
+        resetPageView();
     }
 
-    public void setNotesPerPage(int notesPerPage) throws StudentsTableException {
-        if (notesPerPage <= 0)
-            throw new StudentsTableException("Нельзя отобразить " + notesPerPage + " элементов на старнице");
-        this.notesPerPage = notesPerPage;
-        if (students.size() == 0) return;
-        setPageNumberAndCountOfOPages();
-        displayPage();
-    }
-
-    private void setPageNumberAndCountOfOPages() {
-        if (students.size() == 0) return;
-        currentPageNumber = 1;
+    public void resetPageView() {
         allPagesCount = students.size() % notesPerPage == 0 ?
                 students.size() / notesPerPage : students.size() / notesPerPage + 1;
+        currentPageNumber = 1;
+        if (students.size() == 0) {
+            currentPageNumber = 0;
+        }
+        displayPage();
     }
 
     private void displayPage() {
         tableModel.setRowCount(0);
+        countOfStudentsLabel.setText("Number of all students : " + students.size());
+        numberOfCurrentPageLabel.setText(currentPageNumber + "/" + allPagesCount);
+        if (students.size() == 0) return;
         getStudentsToDisplay().forEach(student -> {
             tableModel.addRow(new Object[]{
                     student.getFIO(),
@@ -77,9 +103,6 @@ public class StudentsTable extends JPanel {
                     student.getProgrammingLanguage()
             });
         });
-        notesPerPageLAbel.setText("Отображать " + notesPerPage + " студентов на странице");
-        countOfStudentsLabel.setText("Количество всех студентов: " + students.size());
-        numberOfCurrentPageLabel.setText(currentPageNumber + "/" + allPagesCount);
     }
 
     private ArrayList<Student> getStudentsToDisplay() {
@@ -89,18 +112,7 @@ public class StudentsTable extends JPanel {
         ));
     }
 
-    private void initButtonsAndLabels() {
-        JPanel downPanel = new JPanel();
-        JPanel upPanel = new JPanel();
-        JButton nextPageButton = new JButton(">");
-        JButton lastPageButton = new JButton(">>");
-        JButton firstPageButton = new JButton("<<");
-        JButton previousPageButton = new JButton("<");
-
-        notesPerPageLAbel.setText("Отображать студентов на странице - " + notesPerPage);
-        countOfStudentsLabel.setText("Количество всех студентов: " + students.size());
-        numberOfCurrentPageLabel.setText(currentPageNumber + "/" + allPagesCount);
-
+    private void initActions() {
         nextPageButton.addActionListener(e -> {
             if (students.size() == 0) return;
             if (currentPageNumber < allPagesCount) {
@@ -127,15 +139,25 @@ public class StudentsTable extends JPanel {
             displayPage();
 
         });
+        notesPerPageJComboBox.addActionListener(e -> {
+            this.notesPerPage = ((NotesPerPageEnum) notesPerPageJComboBox.getSelectedItem()).getValue();
+            resetPageView();
+        });
+    }
 
-        downPanel.add(firstPageButton);
-        downPanel.add(previousPageButton);
-        downPanel.add(numberOfCurrentPageLabel);
-        downPanel.add(nextPageButton);
-        downPanel.add(lastPageButton);
-        upPanel.add(notesPerPageLAbel);
-        upPanel.add(countOfStudentsLabel);
-        add(downPanel, BorderLayout.SOUTH);
-        add(upPanel, BorderLayout.NORTH);
+    private enum NotesPerPageEnum {
+        FIVE(5),
+        TEN(10),
+        TWENTY(20);
+
+        private final int numValue;
+
+        NotesPerPageEnum(int numValue) {
+            this.numValue = numValue;
+        }
+
+        public int getValue() {
+            return numValue;
+        }
     }
 }
