@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 
-public class MySAX {
+public class StudentSAX {
     private static ArrayList<Student> students;
 
     public static ArrayList<Student> readStudents(File file) throws ParserConfigurationException, SAXException, IOException {

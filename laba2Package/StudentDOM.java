@@ -24,7 +24,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
-public class MyDOM {
+public class StudentDOM {
     public static void writeStudents(ArrayList<Student> students, File file) throws ParserConfigurationException, IOException, SAXException, TransformerException {
         DocumentBuilder documentBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
         Document document = documentBuilder.parse(file);
