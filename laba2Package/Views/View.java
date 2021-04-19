@@ -11,24 +11,27 @@ import java.util.ArrayList;
 
 public class View {
 
-    private JMenuBar jMenuBar;
-    private JMenu fileJMenu;
-    private JMenuItem loadListJMenuItem;
-    private JMenuItem saveListJMenuItem;
-    private JMenuItem emptyListJMenuItem;
-    private JMenu editJMenu;
-    private JMenuItem addNoteJMenuItem;
-    private JMenuItem searchNoteJMenuItem;
-    private JMenuItem deleteNoteJMenuItem;
-    private final ViewerOfPages viewerOfPages;
-    private final JToolBar jToolBar;
-    JButton saveJButton;
-    JButton loadJButton;
-    JButton newFileJButton;
-    JButton editJButton;
-    JButton deleteNoteJButton;
-    JButton searchJButton;
+    private final JMenuBar jMenuBar;
 
+    private final JMenu fileJMenu;
+    private final JMenuItem loadListJMenuItem;
+    private final JMenuItem saveListJMenuItem;
+    private final JMenuItem emptyListJMenuItem;
+
+    private final JMenu editJMenu;
+    private final JMenuItem addNoteJMenuItem;
+    private final JMenuItem searchNoteJMenuItem;
+    private final JMenuItem deleteNoteJMenuItem;
+
+    private final JToolBar jToolBar;
+    private final JButton saveJButton;
+    private final JButton loadJButton;
+    private final JButton newFileJButton;
+    private final JButton editJButton;
+    private final JButton deleteNoteJButton;
+    private final JButton searchJButton;
+
+    private final ViewerOfPages viewerOfPages;
 
     public View() {
         JFrame jFrame = new JFrame("Students");
@@ -61,6 +64,7 @@ public class View {
 
         saveJButton = new JButton(new ImageIcon("src//laba2Package//Pictures//save.png"));
         saveJButton.setBorderPainted(false);
+        saveJButton.setContentAreaFilled(false);
         loadJButton = new JButton(new ImageIcon("src//laba2Package//Pictures//load.png"));
         loadJButton.setBorderPainted(false);
         newFileJButton = new JButton(new ImageIcon("src//laba2Package//Pictures//newFile.png"));
@@ -93,5 +97,73 @@ public class View {
 
         jFrame.setVisible(true);
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+
+    public JMenuBar getJMenuBar() {
+        return jMenuBar;
+    }
+
+    public JMenu getFileJMenu() {
+        return fileJMenu;
+    }
+
+    public JMenuItem getLoadListJMenuItem() {
+        return loadListJMenuItem;
+    }
+
+    public JMenuItem getSaveListJMenuItem() {
+        return saveListJMenuItem;
+    }
+
+    public JMenuItem getEmptyListJMenuItem() {
+        return emptyListJMenuItem;
+    }
+
+    public JMenu getEditJMenu() {
+        return editJMenu;
+    }
+
+    public JMenuItem getAddNoteJMenuItem() {
+        return addNoteJMenuItem;
+    }
+
+    public JMenuItem getSearchNoteJMenuItem() {
+        return searchNoteJMenuItem;
+    }
+
+    public JMenuItem getDeleteNoteJMenuItem() {
+        return deleteNoteJMenuItem;
+    }
+
+    public JToolBar getJToolBar() {
+        return jToolBar;
+    }
+
+    public JButton getSaveJButton() {
+        return saveJButton;
+    }
+
+    public JButton getLoadJButton() {
+        return loadJButton;
+    }
+
+    public JButton getNewFileJButton() {
+        return newFileJButton;
+    }
+
+    public JButton getEditJButton() {
+        return editJButton;
+    }
+
+    public JButton getDeleteNoteJButton() {
+        return deleteNoteJButton;
+    }
+
+    public JButton getSearchJButton() {
+        return searchJButton;
+    }
+
+    public ViewerOfPages getViewerOfPages() {
+        return viewerOfPages;
     }
 }
