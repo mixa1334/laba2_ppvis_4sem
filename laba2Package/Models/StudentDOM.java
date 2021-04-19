@@ -57,7 +57,7 @@ public class StudentDOM {
         transformer.transform(domSource, streamResult);
     }
 
-    public static void clearDocument(Document document) {
+    private static void clearDocument(Document document) {
         NodeList students = document.getElementsByTagName(Student.class.getSimpleName());
         Set<Element> targets = new HashSet<>();
         for (int i = 0; i < students.getLength(); i++) {

@@ -36,7 +36,7 @@ public class ViewerOfPages extends JPanel {
         previousPageButton = new JButton("<");
         JTable jTable = new JTable();
 
-        notesPerPageJComboBox = new JComboBox(NotesPerPageEnum.values());
+        notesPerPageJComboBox = new JComboBox<>(NotesPerPageEnum.values());
 
         String[] columnNames = {"ФИО", "Курс",
                 "Группа", "Общее число работ", "Количество выполненных работ",
