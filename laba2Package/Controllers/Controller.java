@@ -1,5 +1,5 @@
 package laba2Package.Controllers;
 
-public class ViewController {
+public class Controller {
 
 }

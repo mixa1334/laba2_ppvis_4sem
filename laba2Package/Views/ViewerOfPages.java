@@ -46,23 +46,22 @@ public class ViewerOfPages extends JPanel {
         countOfStudentsLabel.setText("Number of all students : " + students.size());
         numberOfCurrentPageLabel.setText(currentPageNumber + "/" + allPagesCount);
 
-        notesPerPage = 5;
+        notesPerPage = NotesPerPageEnum.FIVE.getValue();
 
         tableModel = new DefaultTableModel();
         tableModel.setColumnIdentifiers(columnNames);
         jTable.setModel(tableModel);
 
-        setLayout(new BorderLayout());
+        setLayout(new BorderLayout(5, 5));
+
         downPanel.add(firstPageButton);
         downPanel.add(previousPageButton);
         downPanel.add(numberOfCurrentPageLabel);
         downPanel.add(nextPageButton);
         downPanel.add(lastPageButton);
-        //downPanel.setBackground(Color.gray);
         upPanel.add(notesPerPageLAbel);
         upPanel.add(notesPerPageJComboBox);
         upPanel.add(countOfStudentsLabel);
-        //upPanel.setBackground(Color.gray);
         add(new JScrollPane(jTable), BorderLayout.CENTER);
         add(downPanel, BorderLayout.SOUTH);
         add(upPanel, BorderLayout.NORTH);
@@ -85,6 +84,13 @@ public class ViewerOfPages extends JPanel {
         displayPage();
     }
 
+    private ArrayList<Student> getStudentsToDisplay() {
+        return new ArrayList<>(students.subList(
+                (currentPageNumber - 1) * notesPerPage,
+                Math.min(currentPageNumber * notesPerPage, students.size())
+        ));
+    }
+
     private void displayPage() {
         tableModel.setRowCount(0);
         countOfStudentsLabel.setText("Number of all students : " + students.size());
@@ -100,13 +106,6 @@ public class ViewerOfPages extends JPanel {
                     student.getProgrammingLanguage()
             });
         });
-    }
-
-    private ArrayList<Student> getStudentsToDisplay() {
-        return new ArrayList<>(students.subList(
-                (currentPageNumber - 1) * notesPerPage,
-                Math.min(currentPageNumber * notesPerPage, students.size())
-        ));
     }
 
     private void initActions() {
