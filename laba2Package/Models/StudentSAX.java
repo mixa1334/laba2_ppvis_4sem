@@ -40,6 +40,7 @@ public class StudentSAX {
                         fieldToWrite.set(student, String.copyValueOf(ch, start, length));
                     }
                 } catch (NoSuchFieldException | IllegalAccessException e) {
+                    e.printStackTrace();
                 }
             }
 

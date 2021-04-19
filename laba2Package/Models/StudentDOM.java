@@ -43,6 +43,7 @@ public class StudentDOM {
             try {
                 temp.setTextContent(f.get(student).toString());
             } catch (IllegalAccessException e) {
+                e.printStackTrace();
             }
             studentElement.appendChild(temp);
         }

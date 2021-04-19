@@ -38,22 +38,21 @@ public class StudentsModel {
 
     public ArrayList<Student> searchStudents(SearchCriteria searchCriteria, String criteria) throws StudentModelException {
         if (criteria == null) throw new StudentModelException("Empty criteria");
-        Field field = null;
         try {
-            field = Student.class.getDeclaredField(searchCriteria.getValue());
+            Field field = Student.class.getDeclaredField(searchCriteria.getValue());
+            field.setAccessible(true);
+            return students.stream().filter(student -> {
+                try {
+                    return (field.get(student)).toString().equals(criteria);
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                }
+                return false;
+            }).collect(Collectors.toCollection(ArrayList::new));
         } catch (NoSuchFieldException e) {
             e.printStackTrace();
         }
-        final Field finalField = field;
-        finalField.setAccessible(true);
-
-        return students.stream().filter(student -> {
-            try {
-                return (finalField.get(student)).toString().equals(criteria);
-            } catch (IllegalAccessException e) {
-            }
-            return false;
-        }).collect(Collectors.toCollection(ArrayList::new));
+        return new ArrayList<>();
     }
 
     public void removeStudents(Student... students) {

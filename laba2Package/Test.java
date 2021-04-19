@@ -30,6 +30,8 @@ class MainTest {
             e.printStackTrace();
         }
         try {
+            System.out.println(stm.getStudents());
+            System.out.println("---------------------------------------------------");
             ArrayList<Student> stds = stm.searchStudents(StudentsModel.SearchCriteria.COURSE, "2");
             System.out.println(stds);
             System.out.println("---------------------------------------------------");
