@@ -1,4 +1,4 @@
-package laba2Package;
+package laba2Package.Models;
 
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;

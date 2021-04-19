@@ -1,4 +1,4 @@
-package laba2Package;
+package laba2Package.Models;
 
 public class Student {
     private String FIO;

@@ -1,5 +1,7 @@
 package laba2Package;
 
+import laba2Package.Models.StudentSAX;
+import laba2Package.Views.MainView;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -13,6 +15,6 @@ public class Main {
     public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException, TransformerException {
         File file = Paths.get("src\\laba2Package\\test.xml").toFile();
 
-        new MainFrame(StudentSAX.readStudents(file));
+        new MainView(StudentSAX.readStudents(file));
     }
 }

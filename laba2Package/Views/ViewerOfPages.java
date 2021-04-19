@@ -1,13 +1,14 @@
-package laba2Package;
+package laba2Package.Views;
+
+import laba2Package.Exceptions.ViewerOfPagesException;
+import laba2Package.Models.Student;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
-public class StudentsTable extends JPanel {
+public class ViewerOfPages extends JPanel {
 
     private final DefaultTableModel tableModel;
     private final JLabel numberOfCurrentPageLabel;
@@ -22,7 +23,7 @@ public class StudentsTable extends JPanel {
     private int notesPerPage;
     private int allPagesCount;
 
-    public StudentsTable() {
+    public ViewerOfPages() {
         this.students = new ArrayList<>();
         numberOfCurrentPageLabel = new JLabel();
         countOfStudentsLabel = new JLabel();
@@ -38,7 +39,7 @@ public class StudentsTable extends JPanel {
         notesPerPageJComboBox = new JComboBox(NotesPerPageEnum.values());
 
         String[] columnNames = {"ФИО", "Курс",
-                "группа", "Общее число работ", "Количество выполненных работ",
+                "Группа", "Общее число работ", "Количество выполненных работ",
                 "Язык программирования"};
 
         notesPerPageLAbel.setText("Display students on page  - ");
@@ -51,19 +52,18 @@ public class StudentsTable extends JPanel {
         tableModel.setColumnIdentifiers(columnNames);
         jTable.setModel(tableModel);
 
-        JScrollPane scrollPane = new JScrollPane(jTable);
-        scrollPane.setPreferredSize(new Dimension(800, 300));
-
         setLayout(new BorderLayout());
         downPanel.add(firstPageButton);
         downPanel.add(previousPageButton);
         downPanel.add(numberOfCurrentPageLabel);
         downPanel.add(nextPageButton);
         downPanel.add(lastPageButton);
+        //downPanel.setBackground(Color.gray);
         upPanel.add(notesPerPageLAbel);
         upPanel.add(notesPerPageJComboBox);
         upPanel.add(countOfStudentsLabel);
-        add(scrollPane, BorderLayout.CENTER);
+        //upPanel.setBackground(Color.gray);
+        add(new JScrollPane(jTable), BorderLayout.CENTER);
         add(downPanel, BorderLayout.SOUTH);
         add(upPanel, BorderLayout.NORTH);
 
@@ -71,9 +71,9 @@ public class StudentsTable extends JPanel {
         initActions();
     }
 
-    public void setStudentsToDisplay(ArrayList<Student> students) throws StudentsTableException {
+    public void setStudentsToDisplay(ArrayList<Student> students) throws ViewerOfPagesException {
         if (students == null)
-            throw new StudentsTableException("Cant display NULL List of student");
+            throw new ViewerOfPagesException("Cant display NULL List of student");
         this.students = students;
         resetPageView();
     }
@@ -81,10 +81,7 @@ public class StudentsTable extends JPanel {
     public void resetPageView() {
         allPagesCount = students.size() % notesPerPage == 0 ?
                 students.size() / notesPerPage : students.size() / notesPerPage + 1;
-        currentPageNumber = 1;
-        if (students.size() == 0) {
-            currentPageNumber = 0;
-        }
+        currentPageNumber = students.size() == 0 ? 0 : 1;
         displayPage();
     }
 
@@ -148,7 +145,7 @@ public class StudentsTable extends JPanel {
     private enum NotesPerPageEnum {
         FIVE(5),
         TEN(10),
-        TWENTY(20);
+        FIFTY(50);
 
         private final int numValue;
 
