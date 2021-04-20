@@ -2,23 +2,37 @@ package laba2Package.Models;
 
 import laba2Package.Exceptions.StudentException;
 
+import java.util.regex.Pattern;
+
 public class Student {
     private String FIO;
     private int course;
     private String group;
     private int numberOfTasks;
     private int numberOfCompletedTasks;
+    private int numberOfToDoTasks;
     private String programmingLanguage;
 
     public Student() {
     }
 
+    public Student(Student student) throws StudentException {
+        this(student.FIO, student.course, student.group, student.numberOfTasks, student.numberOfCompletedTasks, student.programmingLanguage);
+    }
+
     public Student(String FIO, int course, String group, int numberOfTasks, int numberOfCompletedTasks, String programmingLanguage) throws StudentException {
 
-        if (course <= 0 || numberOfTasks <= 0 || numberOfCompletedTasks <= 0
-                || FIO == null || FIO.equals("") || group == null || group.equals("")
-                || programmingLanguage == null || programmingLanguage.equals(""))
+        if (course <= 0 || numberOfCompletedTasks <= 0
+                || FIO == null || group == null || programmingLanguage == null
+                || numberOfTasks < numberOfCompletedTasks)
             throw new StudentException("Incorrect parameters");
+
+        if (!Pattern.compile("\\A([a-zA-Z]+\\s){2}([a-zA-Z]+)\\Z").matcher(FIO).find())
+            throw new StudentException("Incorrect FIO: " + FIO);
+        if (!Pattern.compile("\\A([a-zA-Z0-9]+)\\Z").matcher(group).find())
+            throw new StudentException("Incorrect group: " + group);
+        if (!Pattern.compile("\\A(.+)\\Z").matcher(programmingLanguage).find())
+            throw new StudentException("Incorrect programming language: " + programmingLanguage);
 
         this.FIO = FIO;
         this.course = course;
@@ -26,6 +40,7 @@ public class Student {
         this.numberOfTasks = numberOfTasks;
         this.numberOfCompletedTasks = numberOfCompletedTasks;
         this.programmingLanguage = programmingLanguage;
+        this.numberOfToDoTasks = numberOfTasks - numberOfCompletedTasks;
     }
 
     public String getFIO() {
@@ -49,6 +64,9 @@ public class Student {
         return numberOfCompletedTasks;
     }
 
+    public int getNumberOfToDoTasks() {
+        return numberOfToDoTasks;
+    }
 
     public String getProgrammingLanguage() {
         return programmingLanguage;

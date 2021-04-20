@@ -8,6 +8,8 @@ import javax.xml.transform.TransformerException;
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.TreeSet;
@@ -21,19 +23,20 @@ public class StudentsModel {
     private TreeSet<Integer> allNumberOfCompletedTasks;
 
     public StudentsModel() {
+        clear();
+    }
+
+    public void clear() {
         students = new ArrayList<>(50);
         allProgrammingLanguages = new TreeSet<>();
         allNumberOfTasks = new TreeSet<>();
         allNumberOfCompletedTasks = new TreeSet<>();
     }
 
-    public void clear() {
-        students = new ArrayList<>();
-    }
-
     public void addStudent(Student student) {
         if (student == null) return;
         students.add(student);
+        update();
     }
 
     public ArrayList<Student> searchStudents(SearchCriteria searchCriteria, String criteria) throws StudentModelException {
@@ -55,8 +58,9 @@ public class StudentsModel {
         return new ArrayList<>();
     }
 
-    public void removeStudents(Student... students) {
-        this.students.removeAll(Arrays.asList(students));
+    public void removeStudents(ArrayList<Student> studentsToRemove) {
+        this.students.removeAll(studentsToRemove);
+        update();
     }
 
     public ArrayList<Student> getStudents() {
@@ -65,6 +69,7 @@ public class StudentsModel {
 
     public void loadStudentsFromFile(File file) throws IOException, SAXException, ParserConfigurationException {
         this.students = StudentSAX.readStudents(file);
+        update();
     }
 
     public void saveStudentsToFile(File file) throws IOException, SAXException, ParserConfigurationException, TransformerException {
@@ -98,13 +103,21 @@ public class StudentsModel {
         students.forEach(e -> allNumberOfCompletedTasks.add(e.getNumberOfCompletedTasks()));
     }
 
+    private void update() {
+        setAllNumberOfCompletedTasks();
+        setAllNumberOfTasks();
+        setAllProgrammingLanguages();
+    }
+
+
     public enum SearchCriteria {
         FIO("FIO"),
         COURSE("course"),
         GROUP("group"),
         NUMBER_OF_TASKS("numberOfTasks"),
         NUMBER_OF_COMPLETED_TASKS("numberOfCompletedTasks"),
-        PROGRAMMING_LANGUAGE("programmingLanguage");
+        PROGRAMMING_LANGUAGE("programmingLanguage"),
+        NUMBER_OF_TO_DO_TASKS("numberOfToDoTasks");
 
         private final String numValue;
 

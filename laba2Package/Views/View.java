@@ -99,10 +99,6 @@ public class View {
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
-    public JMenuBar getJMenuBar() {
-        return jMenuBar;
-    }
-
     public JMenu getFileJMenu() {
         return fileJMenu;
     }
@@ -133,10 +129,6 @@ public class View {
 
     public JMenuItem getDeleteNoteJMenuItem() {
         return deleteNoteJMenuItem;
-    }
-
-    public JToolBar getJToolBar() {
-        return jToolBar;
     }
 
     public JButton getSaveJButton() {
