@@ -7,6 +7,7 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class ViewerOfPages extends JPanel {
 
@@ -45,9 +46,9 @@ public class ViewerOfPages extends JPanel {
         notesPerPage = NotesPerPageEnum.FIVE.getValue();
 
         tableModel = new DefaultTableModel();
-        tableModel.setColumnIdentifiers(new String[]{"ФИО", "Курс",
-                "Группа", "Общее число работ", "Количество выполненных работ",
-                "Язык программирования"});
+        String[] names = Arrays.copyOf(Student.AllCriteria.getAllName(),
+                Student.AllCriteria.getAllName().length - 1);
+        tableModel.setColumnIdentifiers(names);
         jTable.setModel(tableModel);
 
         setLayout(new BorderLayout(5, 5));

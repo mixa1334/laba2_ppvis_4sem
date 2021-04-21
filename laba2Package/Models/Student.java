@@ -72,22 +72,38 @@ public class Student {
     }
 
     public enum AllCriteria {
-        FIO("fio"),
-        COURSE("course"),
-        GROUP("group"),
-        NUMBER_OF_TASKS("numberOfTasks"),
-        NUMBER_OF_COMPLETED_TASKS("numberOfCompletedTasks"),
-        PROGRAMMING_LANGUAGE("programmingLanguage"),
-        NUMBER_OF_TO_DO_TASKS("numberOfToDoTasks");
+        FIO("ФИО", "fio"),
+        COURSE("Курс", "course"),
+        GROUP("Группа", "group"),
+        NUMBER_OF_TASKS("Общее число работ", "numberOfTasks"),
+        NUMBER_OF_COMPLETED_TASKS("Количество выполненных работ", "numberOfCompletedTasks"),
+        NUMBER_OF_TO_DO_TASKS("Количество невыполненных работ", "numberOfToDoTasks"),
+        PROGRAMMING_LANGUAGE("Язык программирования", "programmingLanguage");
 
-        private final String numValue;
+        private final String value;
+        private final String name;
 
-        AllCriteria(String numValue) {
-            this.numValue = numValue;
+        AllCriteria(final String name, final String value) {
+            this.value = value;
+            this.name = name;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public static String[] getAllName() {
+            return new String[]{FIO.name, COURSE.name, GROUP.name, NUMBER_OF_TASKS.name,
+                    NUMBER_OF_COMPLETED_TASKS.name, PROGRAMMING_LANGUAGE.name, NUMBER_OF_TO_DO_TASKS.name};
         }
 
         public String getValue() {
-            return numValue;
+            return value;
+        }
+
+        public static String[] getAllValues() {
+            return new String[]{FIO.value, COURSE.value, GROUP.value, NUMBER_OF_TASKS.value,
+                    NUMBER_OF_COMPLETED_TASKS.value, PROGRAMMING_LANGUAGE.value, NUMBER_OF_TO_DO_TASKS.value};
         }
     }
 

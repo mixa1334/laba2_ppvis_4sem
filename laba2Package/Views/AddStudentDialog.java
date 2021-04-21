@@ -5,8 +5,7 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-public class AddStudentDialog extends JDialog {
-    private final JFrame jFrame;
+public class AddStudentDialog extends CustomDialog {
     private final JButton addStudentJButton;
     private final JTextField fioJTextField;
     private final JTextField courseJTextField;
@@ -16,9 +15,8 @@ public class AddStudentDialog extends JDialog {
     private final JTextField programmingLanguageJTextField;
 
     public AddStudentDialog(JFrame jFrame) {
-        super(jFrame, "Add new student", true);
-        this.jFrame = jFrame;
-        JPanel jPanel = new JPanel(new GridLayout(3, 4, 5, 5));
+        super(jFrame, "Add new student");
+        JPanel jPanel = new JPanel(new GridLayout(3, 4, 10, 5));
         addStudentJButton = new JButton("add student");
         jPanel.add(new JLabel("ФИО"));
         jPanel.add(fioJTextField = new JTextField());
@@ -34,11 +32,6 @@ public class AddStudentDialog extends JDialog {
         jPanel.add(programmingLanguageJTextField = new JTextField());
 
         setLayout(new BorderLayout(5, 5));
-        setResizable(false);
-        getRootPane().setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-        setResizable(false);
-        setLocation(jFrame.getLocation().x + jFrame.getSize().width / 2,
-                jFrame.getLocation().y + jFrame.getSize().height / 2);
 
         getContentPane().add(jPanel, BorderLayout.CENTER);
         getContentPane().add(addStudentJButton, BorderLayout.SOUTH);
@@ -50,9 +43,7 @@ public class AddStudentDialog extends JDialog {
     }
 
     public String[] getValuesFromTable() {
-        setVisible(false);
-        setLocation(jFrame.getLocation().x + jFrame.getSize().width / 2,
-                jFrame.getLocation().y + jFrame.getSize().height / 2);
+        hideCustomDialog();
         return new String[]{
                 fioJTextField.getText(),
                 courseJTextField.getText(),

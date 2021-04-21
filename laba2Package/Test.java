@@ -1,6 +1,8 @@
 package laba2Package;
 
 import laba2Package.Views.AddStudentDialog;
+import laba2Package.Views.DeleteStudentsDialog;
+import laba2Package.Views.SearchStudentsDialog;
 
 import javax.swing.*;
 import java.awt.*;
@@ -37,20 +39,8 @@ class MainTest extends JFrame {
 
     public static void main(String[] args) {
         JFrame jf = new MainTest();
-        AddStudentDialog jd = new AddStudentDialog(jf);
-        //jd.setSize(new Dimension(500, 500));
-        //jd.setLocation(jf.getLocation().x + jf.getLocation().x / 2,
-        // jf.getLocation().y + jf.getLocation().y / 2);
-        //jd.pack();
-        jd.setActionToAddStudentJButton(e -> {
-            String[] arr = jd.getValuesFromTable();
-            if (arr.length > 0) {
-                System.out.println(Arrays.toString(arr));
-                jd.setVisible(false);
-            } else {
-                System.out.println("error");
-            }
-        });
+        DeleteStudentsDialog jd = new DeleteStudentsDialog(jf);
+
         jd.setVisible(true);
     }
 }
