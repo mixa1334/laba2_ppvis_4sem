@@ -38,10 +38,6 @@ public class ViewerOfPages extends JPanel {
 
         notesPerPageJComboBox = new JComboBox<>(NotesPerPageEnum.values());
 
-        String[] columnNames = {"ФИО", "Курс",
-                "Группа", "Общее число работ", "Количество выполненных работ",
-                "Язык программирования"};
-
         notesPerPageLAbel.setText("Display students on page  - ");
         countOfStudentsLabel.setText("Number of all students : " + students.size());
         numberOfCurrentPageLabel.setText(currentPageNumber + "/" + allPagesCount);
@@ -49,7 +45,9 @@ public class ViewerOfPages extends JPanel {
         notesPerPage = NotesPerPageEnum.FIVE.getValue();
 
         tableModel = new DefaultTableModel();
-        tableModel.setColumnIdentifiers(columnNames);
+        tableModel.setColumnIdentifiers(new String[]{"ФИО", "Курс",
+                "Группа", "Общее число работ", "Количество выполненных работ",
+                "Язык программирования"});
         jTable.setModel(tableModel);
 
         setLayout(new BorderLayout(5, 5));
@@ -66,8 +64,8 @@ public class ViewerOfPages extends JPanel {
         add(downPanel, BorderLayout.SOUTH);
         add(upPanel, BorderLayout.NORTH);
 
-        resetPageView();
         initActions();
+        resetPageView();
     }
 
     public void setStudentsToDisplay(ArrayList<Student> students) throws ViewerOfPagesException {
@@ -98,7 +96,7 @@ public class ViewerOfPages extends JPanel {
         if (students.size() == 0) return;
         getStudentsToDisplay().forEach(student -> {
             tableModel.addRow(new Object[]{
-                    student.getFIO(),
+                    student.getFio(),
                     student.getCourse(),
                     student.getGroup(),
                     student.getNumberOfTasks(),

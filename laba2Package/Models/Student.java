@@ -5,7 +5,7 @@ import laba2Package.Exceptions.StudentException;
 import java.util.regex.Pattern;
 
 public class Student {
-    private String FIO;
+    private String fio;
     private int course;
     private String group;
     private int numberOfTasks;
@@ -17,24 +17,24 @@ public class Student {
     }
 
     public Student(Student student) throws StudentException {
-        this(student.FIO, student.course, student.group, student.numberOfTasks, student.numberOfCompletedTasks, student.programmingLanguage);
+        this(student.fio, student.course, student.group, student.numberOfTasks, student.numberOfCompletedTasks, student.programmingLanguage);
     }
 
-    public Student(String FIO, int course, String group, int numberOfTasks, int numberOfCompletedTasks, String programmingLanguage) throws StudentException {
+    public Student(String fio, int course, String group, int numberOfTasks, int numberOfCompletedTasks, String programmingLanguage) throws StudentException {
 
         if (course <= 0 || numberOfCompletedTasks <= 0
-                || FIO == null || group == null || programmingLanguage == null
+                || fio == null || group == null || programmingLanguage == null
                 || numberOfTasks < numberOfCompletedTasks)
             throw new StudentException("Incorrect parameters");
 
-        if (!Pattern.compile("\\A([a-zA-Z]+\\s){2}([a-zA-Z]+)\\Z").matcher(FIO).find())
-            throw new StudentException("Incorrect FIO: " + FIO);
+        if (!Pattern.compile("\\A([a-zA-Z]+\\s){2}([a-zA-Z]+)\\Z").matcher(fio).find())
+            throw new StudentException("Incorrect FIO: " + fio);
         if (!Pattern.compile("\\A([a-zA-Z0-9]+)\\Z").matcher(group).find())
             throw new StudentException("Incorrect group: " + group);
         if (!Pattern.compile("\\A(.+)\\Z").matcher(programmingLanguage).find())
             throw new StudentException("Incorrect programming language: " + programmingLanguage);
 
-        this.FIO = FIO;
+        this.fio = fio;
         this.course = course;
         this.group = group;
         this.numberOfTasks = numberOfTasks;
@@ -43,8 +43,8 @@ public class Student {
         this.numberOfToDoTasks = numberOfTasks - numberOfCompletedTasks;
     }
 
-    public String getFIO() {
-        return FIO;
+    public String getFio() {
+        return fio;
     }
 
     public int getCourse() {
@@ -54,7 +54,6 @@ public class Student {
     public String getGroup() {
         return group;
     }
-
 
     public int getNumberOfTasks() {
         return numberOfTasks;
@@ -72,9 +71,29 @@ public class Student {
         return programmingLanguage;
     }
 
+    public enum AllCriteria {
+        FIO("fio"),
+        COURSE("course"),
+        GROUP("group"),
+        NUMBER_OF_TASKS("numberOfTasks"),
+        NUMBER_OF_COMPLETED_TASKS("numberOfCompletedTasks"),
+        PROGRAMMING_LANGUAGE("programmingLanguage"),
+        NUMBER_OF_TO_DO_TASKS("numberOfToDoTasks");
+
+        private final String numValue;
+
+        AllCriteria(String numValue) {
+            this.numValue = numValue;
+        }
+
+        public String getValue() {
+            return numValue;
+        }
+    }
+
     @Override
     public String toString() {
-        return "[" + this.FIO + ", " + this.programmingLanguage + ", "
+        return "[" + this.fio + ", " + this.programmingLanguage + ", "
                 + this.course + ", " + this.group + ", "
                 + this.numberOfTasks + ", " + this.numberOfCompletedTasks + "]";
     }
@@ -89,7 +108,7 @@ public class Student {
         }
 
         Student guest = (Student) obj;
-        return FIO.equals(guest.FIO) && course == guest.course && group.equals(guest.group)
+        return fio.equals(guest.fio) && course == guest.course && group.equals(guest.group)
                 && numberOfTasks == guest.numberOfTasks && numberOfCompletedTasks == guest.numberOfCompletedTasks
                 && programmingLanguage.equals(guest.programmingLanguage);
     }

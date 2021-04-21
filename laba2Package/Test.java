@@ -1,30 +1,30 @@
 package laba2Package;
 
-import laba2Package.Exceptions.StudentException;
-import laba2Package.Exceptions.StudentModelException;
-import laba2Package.Models.Student;
-import laba2Package.Models.StudentsModel;
-import laba2Package.Views.View;
+import laba2Package.Views.AddStudentDialog;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class Test extends JDialog {
     public Test(JFrame jFrame) {
         super(jFrame, "Title", true);
-        JPanel jp = new JPanel(new BorderLayout());
+        JPanel jp = new JPanel(new BorderLayout(5, 5));
         jp.add(new JTextField(), BorderLayout.NORTH);
-        jp.add(new JButton("button"), BorderLayout.SOUTH);
-
+        JButton jb = new JButton("button");
+        jb.addActionListener(e -> setVisible(false));
+        jp.add(jb, BorderLayout.SOUTH);
         Point loc = jFrame.getLocation();
-        setLocation(loc.x + 80, loc.y + 80);
+
         getContentPane().add(jp);
+
+        getRootPane().setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        //setSize(new Dimension(500, 500));
+        setLocation(loc.x + loc.x / 2,
+                loc.y + loc.y / 2);
+        //setResizable(false);
         pack();
-        setVisible(true);
+        //setVisible(true);
     }
 }
 
@@ -36,6 +36,21 @@ class MainTest extends JFrame {
     }
 
     public static void main(String[] args) {
-        new Test(new MainTest());
+        JFrame jf = new MainTest();
+        AddStudentDialog jd = new AddStudentDialog(jf);
+        //jd.setSize(new Dimension(500, 500));
+        //jd.setLocation(jf.getLocation().x + jf.getLocation().x / 2,
+        // jf.getLocation().y + jf.getLocation().y / 2);
+        //jd.pack();
+        jd.setActionToAddStudentJButton(e -> {
+            String[] arr = jd.getValuesFromTable();
+            if (arr.length > 0) {
+                System.out.println(Arrays.toString(arr));
+                jd.setVisible(false);
+            } else {
+                System.out.println("error");
+            }
+        });
+        jd.setVisible(true);
     }
 }

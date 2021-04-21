@@ -39,7 +39,7 @@ public class StudentsModel {
         update();
     }
 
-    public ArrayList<Student> searchStudents(SearchCriteria searchCriteria, String criteria) throws StudentModelException {
+    public ArrayList<Student> searchStudents(Student.AllCriteria searchCriteria, String criteria) throws StudentModelException {
         if (criteria == null) throw new StudentModelException("Empty criteria");
         try {
             Field field = Student.class.getDeclaredField(searchCriteria.getValue());
@@ -109,24 +109,4 @@ public class StudentsModel {
         setAllProgrammingLanguages();
     }
 
-
-    public enum SearchCriteria {
-        FIO("FIO"),
-        COURSE("course"),
-        GROUP("group"),
-        NUMBER_OF_TASKS("numberOfTasks"),
-        NUMBER_OF_COMPLETED_TASKS("numberOfCompletedTasks"),
-        PROGRAMMING_LANGUAGE("programmingLanguage"),
-        NUMBER_OF_TO_DO_TASKS("numberOfToDoTasks");
-
-        private final String numValue;
-
-        SearchCriteria(String numValue) {
-            this.numValue = numValue;
-        }
-
-        public String getValue() {
-            return numValue;
-        }
-    }
 }
