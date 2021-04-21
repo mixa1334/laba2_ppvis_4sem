@@ -27,11 +27,11 @@ public class Student {
                 || numberOfTasks < numberOfCompletedTasks)
             throw new StudentException("Incorrect parameters");
 
-        if (!Pattern.compile("\\A([a-zA-Z]+\\s){2}([a-zA-Z]+)\\Z").matcher(fio).find())
+        if (!Pattern.compile("\\A([a-zA-Z]+\\s){2}([a-zA-Z]+)\\Z").matcher(fio.trim()).find())
             throw new StudentException("Incorrect FIO: " + fio);
-        if (!Pattern.compile("\\A([a-zA-Z0-9]+)\\Z").matcher(group).find())
+        if (!Pattern.compile("\\A([a-zA-Z0-9]+)\\Z").matcher(group.trim()).find())
             throw new StudentException("Incorrect group: " + group);
-        if (!Pattern.compile("\\A(.+)\\Z").matcher(programmingLanguage).find())
+        if (!Pattern.compile("\\A(.+)\\Z").matcher(programmingLanguage.trim()).find())
             throw new StudentException("Incorrect programming language: " + programmingLanguage);
 
         this.fio = fio;

@@ -6,20 +6,22 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-public class SearchStudentsDialog extends JDialog {
+public class SearchStudentsDialog extends CustomDialog {
     private final SearchStudentJPanel searchStudentJPanel;
     private final JButton searchStudentsJButton;
     private final ViewerOfPages viewerOfPages;
 
     public SearchStudentsDialog(JFrame jFrame) {
-        super(jFrame, "Delete students");
+        super(jFrame, "Search students");
 
         setLayout(new BorderLayout(5, 5));
+        JPanel jPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         viewerOfPages = new ViewerOfPages();
         searchStudentJPanel = new SearchStudentJPanel();
-        searchStudentsJButton = new JButton("Delete students!");
-        getContentPane().add(viewerOfPages, BorderLayout.CENTER);
-        getContentPane().add(searchStudentJPanel, BorderLayout.WEST);
+        searchStudentsJButton = new JButton("Search students!");
+        jPanel.add(viewerOfPages);
+        jPanel.add(searchStudentJPanel);
+        getContentPane().add(jPanel, BorderLayout.CENTER);
         getContentPane().add(searchStudentsJButton, BorderLayout.SOUTH);
 
         pack();

@@ -69,9 +69,7 @@ public class ViewerOfPages extends JPanel {
         resetPageView();
     }
 
-    public void setStudentsToDisplay(ArrayList<Student> students) throws ViewerOfPagesException {
-        if (students == null)
-            throw new ViewerOfPagesException("Cant display NULL List of student");
+    public void setStudentsToDisplay(ArrayList<Student> students) {
         this.students = students;
         resetPageView();
     }

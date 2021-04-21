@@ -8,7 +8,7 @@ public class View {
 
     private final AddStudentDialog addStudentDialog;
     private final DeleteStudentsDialog deleteStudentsDialog;
-    private final
+    private final SearchStudentsDialog searchStudentsDialog;
 
     private final ViewerOfPages viewerOfPages;
 
@@ -19,6 +19,7 @@ public class View {
 
         viewerOfPages = new ViewerOfPages();
         addStudentDialog = new AddStudentDialog(MainFrame);
+        searchStudentsDialog = new SearchStudentsDialog(MainFrame);
         deleteStudentsDialog = new DeleteStudentsDialog(MainFrame);
         MainFrame.add(viewerOfPages, BorderLayout.CENTER);
 
@@ -36,6 +37,15 @@ public class View {
     public DeleteStudentsDialog getDeleteStudentsDialog() {
         return deleteStudentsDialog;
     }
+
+    public SearchStudentsDialog getSearchStudentsDialog() {
+        return searchStudentsDialog;
+    }
+
+    public JFrame getMainFrame() {
+        return MainFrame;
+    }
+
 
     public ViewerOfPages getViewerOfPages() {
         return viewerOfPages;
@@ -59,6 +69,7 @@ public class View {
         deleteNoteJButton.addActionListener(e -> deleteStudentsDialog.setVisible(true));
         JButton searchJButton = new JButton(new ImageIcon("src//laba2Package//Pictures//search.png"));
         searchJButton.setBorderPainted(false);
+        searchJButton.addActionListener(e -> searchStudentsDialog.setVisible(true));
 
         jToolBar.add(saveJButton);
         jToolBar.addSeparator();
@@ -90,6 +101,7 @@ public class View {
         JMenuItem addNoteJMenuItem = new JMenuItem("Add note");
         addNoteJMenuItem.addActionListener(e -> addStudentDialog.setVisible(true));
         JMenuItem searchNoteJMenuItem = new JMenuItem("Search notes");
+        searchNoteJMenuItem.addActionListener(e -> searchStudentsDialog.setVisible(true));
         JMenuItem deleteNoteJMenuItem = new JMenuItem("Delete notes");
         deleteNoteJMenuItem.addActionListener(e -> deleteStudentsDialog.setVisible(true));
         editJMenu.add(addNoteJMenuItem);

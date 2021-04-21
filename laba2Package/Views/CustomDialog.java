@@ -18,10 +18,4 @@ public class CustomDialog extends JDialog {
 
         pack();
     }
-
-    public void hideCustomDialog() {
-        setVisible(false);
-        setLocation(jFrame.getLocation().x + jFrame.getSize().width / 2,
-                jFrame.getLocation().y + jFrame.getSize().height / 2);
-    }
 }

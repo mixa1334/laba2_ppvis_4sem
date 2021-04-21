@@ -42,8 +42,7 @@ public class AddStudentDialog extends CustomDialog {
         addStudentJButton.addActionListener(action);
     }
 
-    public String[] getValuesFromTable() {
-        hideCustomDialog();
+    public String[] getValuesFromUser() {
         return new String[]{
                 fioJTextField.getText(),
                 courseJTextField.getText(),

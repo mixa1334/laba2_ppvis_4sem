@@ -39,8 +39,8 @@ class MainTest extends JFrame {
 
     public static void main(String[] args) {
         JFrame jf = new MainTest();
-        DeleteStudentsDialog jd = new DeleteStudentsDialog(jf);
+//        DeleteStudentsDialog jd = new DeleteStudentsDialog(jf);
 
-        jd.setVisible(true);
+        //      jd.setVisible(true);
     }
 }

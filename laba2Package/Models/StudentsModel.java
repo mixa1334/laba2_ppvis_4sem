@@ -8,10 +8,9 @@ import javax.xml.transform.TransformerException;
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.TreeSet;
 import java.util.stream.Collectors;
 
@@ -19,8 +18,8 @@ public class StudentsModel {
 
     private ArrayList<Student> students;
     private TreeSet<String> allProgrammingLanguages;
-    private TreeSet<Integer> allNumberOfTasks;
-    private TreeSet<Integer> allNumberOfCompletedTasks;
+    private TreeSet<String> allNumberOfTasks;
+    private TreeSet<String> allNumberOfCompletedTasks;
 
     public StudentsModel() {
         clear();
@@ -39,8 +38,8 @@ public class StudentsModel {
         update();
     }
 
-    public ArrayList<Student> searchStudents(Student.AllCriteria searchCriteria, String criteria) throws StudentModelException {
-        if (criteria == null) throw new StudentModelException("Empty criteria");
+    public ArrayList<Student> searchStudents(Student.AllCriteria searchCriteria, String criteria) {
+        //if (criteria == null) throw new StudentModelException("Empty criteria");
         try {
             Field field = Student.class.getDeclaredField(searchCriteria.getValue());
             field.setAccessible(true);
@@ -64,7 +63,7 @@ public class StudentsModel {
     }
 
     public ArrayList<Student> getStudents() {
-        return new ArrayList<>(students);
+        return students;
     }
 
     public void loadStudentsFromFile(File file) throws IOException, SAXException, ParserConfigurationException {
@@ -80,12 +79,13 @@ public class StudentsModel {
         return allProgrammingLanguages.toArray(new String[0]);
     }
 
-    public Integer[] getAllNumberOfTasks() {
-        return allNumberOfTasks.toArray(new Integer[0]);
+    public String[] getAllNumberOfTasks() {
+        return allNumberOfTasks.toArray(new String[0]);
     }
 
-    public Integer[] getAllNumberOfCompletedTasks() {
-        return allNumberOfCompletedTasks.toArray(new Integer[0]);
+    public String[] getAllNumberOfCompletedTasks() {
+        return allNumberOfCompletedTasks.toArray(new String[0]);
+
     }
 
     private void setAllProgrammingLanguages() {
@@ -95,12 +95,12 @@ public class StudentsModel {
 
     private void setAllNumberOfTasks() {
         allNumberOfTasks = new TreeSet<>();
-        students.forEach(e -> allNumberOfTasks.add(e.getNumberOfTasks()));
+        students.forEach(e -> allNumberOfTasks.add(Integer.toString(e.getNumberOfTasks())));
     }
 
     private void setAllNumberOfCompletedTasks() {
         allNumberOfCompletedTasks = new TreeSet<>();
-        students.forEach(e -> allNumberOfCompletedTasks.add(e.getNumberOfCompletedTasks()));
+        students.forEach(e -> allNumberOfCompletedTasks.add(Integer.toString(e.getNumberOfCompletedTasks())));
     }
 
     private void update() {
