@@ -83,23 +83,23 @@ public class View {
         JToolBar jToolBar = new JToolBar();
         jToolBar.setOrientation(SwingConstants.VERTICAL);
 
-        saveJButton = new JButton(new ImageIcon("src//laba2Package//Pictures//save.png"));
+        saveJButton = new JButton(new ImageIcon("Pictures//save.png"));
         saveJButton.setBorderPainted(false);
-        loadJButton = new JButton(new ImageIcon("src//laba2Package//Pictures//load.png"));
+        loadJButton = new JButton(new ImageIcon("Pictures//load.png"));
         loadJButton.setBorderPainted(false);
-        JButton editJButton = new JButton(new ImageIcon("src//laba2Package//Pictures//edit.png"));
+        JButton editJButton = new JButton(new ImageIcon("Pictures//edit.png"));
         editJButton.setBorderPainted(false);
         editJButton.addActionListener(e -> {
             addStudentDialog.setCustomDialogLocation();
             addStudentDialog.setVisible(true);
         });
-        JButton deleteNoteJButton = new JButton(new ImageIcon("src//laba2Package//Pictures//deleteNote.png"));
+        JButton deleteNoteJButton = new JButton(new ImageIcon("Pictures//deleteNote.png"));
         deleteNoteJButton.setBorderPainted(false);
         deleteNoteJButton.addActionListener(e -> {
             deleteStudentsDialog.setCustomDialogLocation();
             deleteStudentsDialog.setVisible(true);
         });
-        JButton searchJButton = new JButton(new ImageIcon("src//laba2Package//Pictures//search.png"));
+        JButton searchJButton = new JButton(new ImageIcon("Pictures//search.png"));
         searchJButton.setBorderPainted(false);
         searchJButton.addActionListener(e -> {
             searchStudentsDialog.setCustomDialogLocation();

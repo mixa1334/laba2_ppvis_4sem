@@ -11,7 +11,6 @@ public class XMLFileChooser extends JFileChooser {
         FileFilter filter = new FileNameExtensionFilter("XML file", "xml");
         setAcceptAllFileFilterUsed(false);
         setFileFilter(filter);
-        setCurrentDirectory(Paths.get("src\\laba2Package\\").toFile());
         addChoosableFileFilter(filter);
     }
 
