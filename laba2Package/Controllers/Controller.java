@@ -55,7 +55,7 @@ public class Controller {
             updateView();
             view.getAddStudentDialog().setVisible(false);
         } catch (NumberFormatException | StudentException e) {
-            JOptionPane.showMessageDialog(view.getAddStudentDialog(), "Incorrect parameters");
+            JOptionPane.showMessageDialog(view.getAddStudentDialog(), e.getMessage());
         }
     }
 

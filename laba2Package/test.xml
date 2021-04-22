@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <students>
-            
-    
-
-    
-
     <Student>
         <fio>Kravc Mihail Sergeevich</fio>
         <course>2</course>
@@ -30,11 +25,27 @@
         <programmingLanguage>c++</programmingLanguage>
     </Student>
     <Student>
-        <fio>Gribovski Arsen Penis</fio>
+        <fio>kravczova natalia nikolaevna</fio>
         <course>2</course>
-        <group>921703</group>
+        <group>1</group>
         <numberOfTasks>4</numberOfTasks>
-        <numberOfCompletedTasks>1</numberOfCompletedTasks>
-        <programmingLanguage>java</programmingLanguage>
+        <numberOfCompletedTasks>3</numberOfCompletedTasks>
+        <programmingLanguage>assembler</programmingLanguage>
+    </Student>
+    <Student>
+        <fio>kravczov serg sergeevich</fio>
+        <course>4</course>
+        <group>15</group>
+        <numberOfTasks>10</numberOfTasks>
+        <numberOfCompletedTasks>9</numberOfCompletedTasks>
+        <programmingLanguage>fortran</programmingLanguage>
+    </Student>
+    <Student>
+        <fio>visevka vyacheslav stepanovich</fio>
+        <course>5</course>
+        <group>89</group>
+        <numberOfTasks>5</numberOfTasks>
+        <numberOfCompletedTasks>3</numberOfCompletedTasks>
+        <programmingLanguage>c#</programmingLanguage>
     </Student>
 </students>
