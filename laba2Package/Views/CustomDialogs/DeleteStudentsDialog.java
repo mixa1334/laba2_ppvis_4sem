@@ -18,10 +18,12 @@ public class DeleteStudentsDialog extends CustomDialog {
 
         searchStudentJPanel = new SearchStudentJPanel();
         deleteStudentsJButton = new JButton("Delete students!");
+        JPanel buttonJPanel = new JPanel();
+        buttonJPanel.add(deleteStudentsJButton);
         getContentPane().add(searchStudentJPanel, BorderLayout.CENTER);
-        getContentPane().add(deleteStudentsJButton, BorderLayout.SOUTH);
-
+        getContentPane().add(buttonJPanel, BorderLayout.SOUTH);
         pack();
+        setCustomDialogLocation();
     }
 
     public void setActionToDeleteStudentsJButton(ActionListener action) {

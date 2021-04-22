@@ -7,6 +7,6 @@ import laba2Package.Views.View;
 public class App {
 
     public static void main(String[] args) {
-        new Controller(new View(), new StudentsModel());
+        Controller controller = new Controller(new View(), new StudentsModel());
     }
 }

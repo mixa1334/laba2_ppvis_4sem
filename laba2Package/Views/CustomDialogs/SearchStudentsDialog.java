@@ -4,6 +4,7 @@ import laba2Package.Models.Student;
 import laba2Package.Views.ViewerOfPages;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
@@ -15,17 +16,22 @@ public class SearchStudentsDialog extends CustomDialog {
     public SearchStudentsDialog(JFrame jFrame) {
         super(jFrame, "Search students");
 
-        setLayout(new BorderLayout(5, 5));
+        //setLayout(new BorderLayout(5, 5));
         JPanel jPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         viewerOfPages = new ViewerOfPages();
         searchStudentJPanel = new SearchStudentJPanel();
         searchStudentsJButton = new JButton("Search students!");
+        searchStudentsJButton.setSize(100, 50);
+        JPanel searchButtonJPanel = new JPanel();
+        searchButtonJPanel.add(searchStudentsJButton);
+        JPanel searchPanel = new JPanel(new BorderLayout(5, 15));
+        searchPanel.add(searchButtonJPanel, BorderLayout.SOUTH);
+        searchPanel.add(searchStudentJPanel, BorderLayout.CENTER);
         jPanel.add(viewerOfPages);
-        jPanel.add(searchStudentJPanel);
-        getContentPane().add(jPanel, BorderLayout.CENTER);
-        getContentPane().add(searchStudentsJButton, BorderLayout.SOUTH);
-
+        jPanel.add(searchPanel);
+        getContentPane().add(jPanel);
         pack();
+        setCustomDialogLocation();
     }
 
     public ViewerOfPages getViewerOfPages() {

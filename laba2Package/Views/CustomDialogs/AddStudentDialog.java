@@ -30,11 +30,15 @@ public class AddStudentDialog extends CustomDialog {
         jPanel.add(new JLabel("Язык программирования"));
         jPanel.add(programmingLanguageJTextField = new JTextField());
 
+        JPanel buttonJPanel = new JPanel();
+        buttonJPanel.add(addStudentJButton);
+
         setLayout(new BorderLayout(5, 5));
 
         getContentPane().add(jPanel, BorderLayout.CENTER);
-        getContentPane().add(addStudentJButton, BorderLayout.SOUTH);
+        getContentPane().add(buttonJPanel, BorderLayout.SOUTH);
         pack();
+        setCustomDialogLocation();
     }
 
     public void setActionToAddStudentJButton(ActionListener action) {

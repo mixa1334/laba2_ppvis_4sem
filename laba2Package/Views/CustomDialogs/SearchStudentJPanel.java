@@ -85,6 +85,7 @@ public class SearchStudentJPanel extends JPanel implements ActionListener {
         } else if (Objects.equals(criteriaJComboBox.getSelectedItem(), Student.AllCriteria.PROGRAMMING_LANGUAGE.getName())) {
             add(programmingLanguagesJComboBox);
         } else {
+            jTextField.setText("");
             add(jTextField);
         }
         revalidate();

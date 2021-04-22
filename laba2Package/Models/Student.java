@@ -21,12 +21,12 @@ public class Student {
     }
 
     public Student(String fio, int course, String group, int numberOfTasks, int numberOfCompletedTasks, String programmingLanguage) throws StudentException {
-
-        if (course <= 0 || numberOfCompletedTasks <= 0
-                || fio == null || group == null || programmingLanguage == null
-                || numberOfTasks < numberOfCompletedTasks)
-            throw new StudentException("Incorrect parameters");
-
+        if (numberOfTasks < 0)
+            throw new StudentException("Number of tasks cant be <0");
+        if (numberOfCompletedTasks < 0 || numberOfCompletedTasks > numberOfTasks)
+            throw new StudentException("Number of completed tasks cant be <0 and >(number of all tasks)");
+        if (course <= 0 || course > 5)
+            throw new StudentException("Course cant be <1 and >5");
         if (!Pattern.compile("\\A([a-zA-Z]+\\s){2}([a-zA-Z]+)\\Z").matcher(fio.trim()).find())
             throw new StudentException("Incorrect FIO: " + fio);
         if (!Pattern.compile("\\A([a-zA-Z0-9]+)\\Z").matcher(group.trim()).find())

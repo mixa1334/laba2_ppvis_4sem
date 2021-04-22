@@ -27,7 +27,9 @@ public class View {
     public View() {
         MainFrame = new JFrame("Students");
         MainFrame.setLayout(new BorderLayout(5, 5));
-        MainFrame.setBounds(100, 100, 1500, 700);
+        MainFrame.setBounds(Toolkit.getDefaultToolkit().getScreenSize().width / 2 - 600,
+                Toolkit.getDefaultToolkit().getScreenSize().height / 2 - 400,
+                1200, 800);
 
         viewerOfPages = new ViewerOfPages();
         addStudentDialog = new AddStudentDialog(MainFrame);
@@ -87,13 +89,22 @@ public class View {
         loadJButton.setBorderPainted(false);
         JButton editJButton = new JButton(new ImageIcon("src//laba2Package//Pictures//edit.png"));
         editJButton.setBorderPainted(false);
-        editJButton.addActionListener(e -> addStudentDialog.setVisible(true));
+        editJButton.addActionListener(e -> {
+            addStudentDialog.setCustomDialogLocation();
+            addStudentDialog.setVisible(true);
+        });
         JButton deleteNoteJButton = new JButton(new ImageIcon("src//laba2Package//Pictures//deleteNote.png"));
         deleteNoteJButton.setBorderPainted(false);
-        deleteNoteJButton.addActionListener(e -> deleteStudentsDialog.setVisible(true));
+        deleteNoteJButton.addActionListener(e -> {
+            deleteStudentsDialog.setCustomDialogLocation();
+            deleteStudentsDialog.setVisible(true);
+        });
         JButton searchJButton = new JButton(new ImageIcon("src//laba2Package//Pictures//search.png"));
         searchJButton.setBorderPainted(false);
-        searchJButton.addActionListener(e -> searchStudentsDialog.setVisible(true));
+        searchJButton.addActionListener(e -> {
+            searchStudentsDialog.setCustomDialogLocation();
+            searchStudentsDialog.setVisible(true);
+        });
 
         jToolBar.add(saveJButton);
         jToolBar.addSeparator();
@@ -112,8 +123,8 @@ public class View {
         JMenuBar jMenuBar = new JMenuBar();
 
         JMenu fileJMenu = new JMenu("File");
-        loadListJMenuItem = new JMenuItem("Load list");
-        saveListJMenuItem = new JMenuItem("Save list");
+        loadListJMenuItem = new JMenuItem("Load students");
+        saveListJMenuItem = new JMenuItem("Save student");
         fileJMenu.add(loadListJMenuItem);
         fileJMenu.add(saveListJMenuItem);
 
