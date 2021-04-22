@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <students>
+            
+    
+
+    
 
     <Student>
-        <fio>kravcz mixail srgeevich</fio>
+        <fio>Kravc Mihail Sergeevich</fio>
         <course>2</course>
         <group>921703</group>
         <numberOfTasks>4</numberOfTasks>
@@ -10,11 +14,27 @@
         <programmingLanguage>java</programmingLanguage>
     </Student>
     <Student>
-        <fio>Kravc Mihail Sergeevich</fio>
+        <fio>Radukevich Max Sergeevich</fio>
+        <course>1</course>
+        <group>101789</group>
+        <numberOfTasks>5</numberOfTasks>
+        <numberOfCompletedTasks>3</numberOfCompletedTasks>
+        <programmingLanguage>js</programmingLanguage>
+    </Student>
+    <Student>
+        <fio>Zubenko Michail Petrovich</fio>
+        <course>4</course>
+        <group>mafioznik</group>
+        <numberOfTasks>3</numberOfTasks>
+        <numberOfCompletedTasks>3</numberOfCompletedTasks>
+        <programmingLanguage>c++</programmingLanguage>
+    </Student>
+    <Student>
+        <fio>Gribovski Arsen Penis</fio>
         <course>2</course>
         <group>921703</group>
         <numberOfTasks>4</numberOfTasks>
-        <numberOfCompletedTasks>2</numberOfCompletedTasks>
+        <numberOfCompletedTasks>1</numberOfCompletedTasks>
         <programmingLanguage>java</programmingLanguage>
     </Student>
 </students>

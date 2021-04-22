@@ -9,6 +9,7 @@ import org.xml.sax.SAXException;
 import javax.swing.*;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -24,7 +25,9 @@ public class Controller {
 
     public void loadStudentsFromFile() {
         try {
-            studentsModel.loadStudentsFromFile(view.getXmlFileChooser().getPath());
+            File fileToLoadStudents = view.getXmlFileChooser().getPath();
+            if (fileToLoadStudents == null) return;
+            studentsModel.loadStudentsFromFile(fileToLoadStudents);
             view.getViewerOfPages().setStudentsToDisplay(studentsModel.getStudents());
             updateView();
         } catch (IOException | SAXException | ParserConfigurationException e) {
@@ -34,7 +37,9 @@ public class Controller {
 
     public void savedStudentsToFile() {
         try {
-            studentsModel.saveStudentsToFile(view.getXmlFileChooser().getPath());
+            File fileToSaveStudents = view.getXmlFileChooser().getPath();
+            if (fileToSaveStudents == null) return;
+            studentsModel.saveStudentsToFile(fileToSaveStudents);
         } catch (IOException | SAXException | ParserConfigurationException | TransformerException e) {
             JOptionPane.showMessageDialog(view.getMainFrame(), "Cant write to file!");
         }
