@@ -1,6 +1,7 @@
-package laba2Package.Views;
+package laba2Package.Views.CustomDialogs;
 
 import laba2Package.Models.Student;
+import laba2Package.Views.ViewerOfPages;
 
 import javax.swing.*;
 import java.awt.*;

@@ -38,6 +38,9 @@ public class StudentDOM {
         Node root = document.getDocumentElement();
         Element studentElement = document.createElement(Student.class.getSimpleName());
         for (Field f : Student.class.getDeclaredFields()) {
+            if (f.getName().equals(Student.AllCriteria.NUMBER_OF_TO_DO_TASKS.getValue())) {
+                continue;
+            }
             Element temp = document.createElement(f.getName());
             f.setAccessible(true);
             try {

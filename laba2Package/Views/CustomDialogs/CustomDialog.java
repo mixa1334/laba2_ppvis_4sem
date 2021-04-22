@@ -1,4 +1,4 @@
-package laba2Package.Views;
+package laba2Package.Views.CustomDialogs;
 
 import javax.swing.*;
 import java.awt.*;

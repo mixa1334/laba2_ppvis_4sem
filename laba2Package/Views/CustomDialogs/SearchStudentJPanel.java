@@ -1,4 +1,4 @@
-package laba2Package.Views;
+package laba2Package.Views.CustomDialogs;
 
 import laba2Package.Models.Student;
 
@@ -22,8 +22,7 @@ public class SearchStudentJPanel extends JPanel implements ActionListener {
     public SearchStudentJPanel() {
         setLayout(new GridLayout(2, 2, 10, 5));
 
-        criteriaJComboBox = new JComboBox<>(Arrays.copyOf(Student.AllCriteria.getAllName(),
-                Student.AllCriteria.getAllName().length - 1));
+        criteriaJComboBox = new JComboBox<>(Student.AllCriteria.getAllName());
         criteriaJComboBox.addActionListener(this);
 
         jTextField = new JTextField();
@@ -38,9 +37,12 @@ public class SearchStudentJPanel extends JPanel implements ActionListener {
     }
 
     public Student.AllCriteria getSelectedCriteria() {
-        return Arrays.stream(Student.AllCriteria.values()).filter(criteria -> {
-            return criteria.getName().equals(criteriaJComboBox.getSelectedItem());
-        }).collect(Collectors.toCollection(ArrayList::new)).get(0);
+        for (Student.AllCriteria criteria : Student.AllCriteria.values()) {
+            if (criteria.getName().equals(criteriaJComboBox.getSelectedItem())) {
+                return criteria;
+            }
+        }
+        return Student.AllCriteria.FIO;
     }
 
     public String getValueForSearch() {

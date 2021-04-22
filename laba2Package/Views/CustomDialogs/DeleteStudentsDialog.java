@@ -1,14 +1,10 @@
-package laba2Package.Views;
+package laba2Package.Views.CustomDialogs;
 
 import laba2Package.Models.Student;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Objects;
-import java.util.stream.Collectors;
 
 public class DeleteStudentsDialog extends CustomDialog {
 

@@ -1,3 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <students>
+
+    <Student>
+        <fio>kravcz mixail srgeevich</fio>
+        <course>2</course>
+        <group>921703</group>
+        <numberOfTasks>4</numberOfTasks>
+        <numberOfCompletedTasks>2</numberOfCompletedTasks>
+        <programmingLanguage>java</programmingLanguage>
+    </Student>
+    <Student>
+        <fio>Kravc Mihail Sergeevich</fio>
+        <course>2</course>
+        <group>921703</group>
+        <numberOfTasks>4</numberOfTasks>
+        <numberOfCompletedTasks>2</numberOfCompletedTasks>
+        <programmingLanguage>java</programmingLanguage>
+    </Student>
 </students>

@@ -1,7 +1,6 @@
-package laba2Package.Views;
+package laba2Package.Views.CustomDialogs;
 
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
@@ -40,6 +39,15 @@ public class AddStudentDialog extends CustomDialog {
 
     public void setActionToAddStudentJButton(ActionListener action) {
         addStudentJButton.addActionListener(action);
+    }
+
+    public void clearTextFields() {
+        fioJTextField.setText("");
+        courseJTextField.setText("");
+        groupJTextField.setText("");
+        numberOfTasksJTextField.setText("");
+        numberOfCompletedTasksJTextField.setText("");
+        programmingLanguageJTextField.setText("");
     }
 
     public String[] getValuesFromUser() {

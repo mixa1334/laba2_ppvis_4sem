@@ -4,8 +4,12 @@ import laba2Package.Exceptions.StudentException;
 import laba2Package.Models.Student;
 import laba2Package.Models.StudentsModel;
 import laba2Package.Views.View;
+import org.xml.sax.SAXException;
 
 import javax.swing.*;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerException;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Controller {
@@ -18,12 +22,31 @@ public class Controller {
         init();
     }
 
+    public void loadStudentsFromFile() {
+        try {
+            studentsModel.loadStudentsFromFile(view.getXmlFileChooser().getPath());
+            view.getViewerOfPages().setStudentsToDisplay(studentsModel.getStudents());
+            updateView();
+        } catch (IOException | SAXException | ParserConfigurationException e) {
+            JOptionPane.showMessageDialog(view.getMainFrame(), "Cant read from file!");
+        }
+    }
+
+    public void savedStudentsToFile() {
+        try {
+            studentsModel.saveStudentsToFile(view.getXmlFileChooser().getPath());
+        } catch (IOException | SAXException | ParserConfigurationException | TransformerException e) {
+            JOptionPane.showMessageDialog(view.getMainFrame(), "Cant write to file!");
+        }
+    }
+
     public void addStudents() {
         String[] newStudentParameters = view.getAddStudentDialog().getValuesFromUser();
         try {
             studentsModel.addStudent(new Student(newStudentParameters[0], Integer.parseInt(newStudentParameters[1]),
                     newStudentParameters[2], Integer.parseInt(newStudentParameters[3]),
                     Integer.parseInt(newStudentParameters[4]), newStudentParameters[5]));
+            view.getAddStudentDialog().clearTextFields();
             updateView();
             view.getAddStudentDialog().setVisible(false);
         } catch (NumberFormatException | StudentException e) {
@@ -62,5 +85,7 @@ public class Controller {
         view.getAddStudentDialog().setActionToAddStudentJButton(e -> addStudents());
         view.getSearchStudentsDialog().setActionToDeleteStudentsJButton(e -> searchStudents());
         view.getDeleteStudentsDialog().setActionToDeleteStudentsJButton(e -> deleteStudents());
+        view.setActionToLoadFileButtons(e -> loadStudentsFromFile());
+        view.setActionToSaveFileButtons(e -> savedStudentsToFile());
     }
 }

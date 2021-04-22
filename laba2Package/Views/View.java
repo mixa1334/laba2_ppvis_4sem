@@ -1,14 +1,26 @@
 package laba2Package.Views;
 
+import laba2Package.Views.CustomDialogs.AddStudentDialog;
+import laba2Package.Views.CustomDialogs.DeleteStudentsDialog;
+import laba2Package.Views.CustomDialogs.SearchStudentsDialog;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
 
 public class View {
     private final JFrame MainFrame;
 
+    private JButton saveJButton;
+    private JButton loadJButton;
+
+    private JMenuItem loadListJMenuItem;
+    private JMenuItem saveListJMenuItem;
+
     private final AddStudentDialog addStudentDialog;
     private final DeleteStudentsDialog deleteStudentsDialog;
     private final SearchStudentsDialog searchStudentsDialog;
+    private final XMLFileChooser xmlFileChooser;
 
     private final ViewerOfPages viewerOfPages;
 
@@ -21,6 +33,7 @@ public class View {
         addStudentDialog = new AddStudentDialog(MainFrame);
         searchStudentsDialog = new SearchStudentsDialog(MainFrame);
         deleteStudentsDialog = new DeleteStudentsDialog(MainFrame);
+        xmlFileChooser = new XMLFileChooser();
         MainFrame.add(viewerOfPages, BorderLayout.CENTER);
 
         setJMenuBar();
@@ -46,6 +59,19 @@ public class View {
         return MainFrame;
     }
 
+    public XMLFileChooser getXmlFileChooser() {
+        return xmlFileChooser;
+    }
+
+    public void setActionToLoadFileButtons(ActionListener action) {
+        loadJButton.addActionListener(action);
+        loadListJMenuItem.addActionListener(action);
+    }
+
+    public void setActionToSaveFileButtons(ActionListener action) {
+        saveJButton.addActionListener(action);
+        saveListJMenuItem.addActionListener(action);
+    }
 
     public ViewerOfPages getViewerOfPages() {
         return viewerOfPages;
@@ -55,12 +81,10 @@ public class View {
         JToolBar jToolBar = new JToolBar();
         jToolBar.setOrientation(SwingConstants.VERTICAL);
 
-        JButton saveJButton = new JButton(new ImageIcon("src//laba2Package//Pictures//save.png"));
+        saveJButton = new JButton(new ImageIcon("src//laba2Package//Pictures//save.png"));
         saveJButton.setBorderPainted(false);
-        JButton loadJButton = new JButton(new ImageIcon("src//laba2Package//Pictures//load.png"));
+        loadJButton = new JButton(new ImageIcon("src//laba2Package//Pictures//load.png"));
         loadJButton.setBorderPainted(false);
-        JButton newFileJButton = new JButton(new ImageIcon("src//laba2Package//Pictures//newFile.png"));
-        newFileJButton.setBorderPainted(false);
         JButton editJButton = new JButton(new ImageIcon("src//laba2Package//Pictures//edit.png"));
         editJButton.setBorderPainted(false);
         editJButton.addActionListener(e -> addStudentDialog.setVisible(true));
@@ -75,8 +99,6 @@ public class View {
         jToolBar.addSeparator();
         jToolBar.add(loadJButton);
         jToolBar.addSeparator();
-        jToolBar.add(newFileJButton);
-        jToolBar.addSeparator();
         jToolBar.add(editJButton);
         jToolBar.addSeparator();
         jToolBar.add(deleteNoteJButton);
@@ -90,12 +112,10 @@ public class View {
         JMenuBar jMenuBar = new JMenuBar();
 
         JMenu fileJMenu = new JMenu("File");
-        JMenuItem loadListJMenuItem = new JMenuItem("Load list");
-        JMenuItem saveListJMenuItem = new JMenuItem("Save list");
-        JMenuItem emptyListJMenuItem = new JMenuItem("Empty list");
+        loadListJMenuItem = new JMenuItem("Load list");
+        saveListJMenuItem = new JMenuItem("Save list");
         fileJMenu.add(loadListJMenuItem);
         fileJMenu.add(saveListJMenuItem);
-        fileJMenu.add(emptyListJMenuItem);
 
         JMenu editJMenu = new JMenu("Edit");
         JMenuItem addNoteJMenuItem = new JMenuItem("Add note");
