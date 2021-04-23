@@ -4,6 +4,7 @@ import javax.swing.*;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.io.File;
+import java.nio.file.Paths;
 
 public class XMLFileChooser extends JFileChooser {
     public XMLFileChooser() {
@@ -11,6 +12,7 @@ public class XMLFileChooser extends JFileChooser {
         setAcceptAllFileFilterUsed(false);
         setFileFilter(filter);
         addChoosableFileFilter(filter);
+        setCurrentDirectory(Paths.get("").toAbsolutePath().toFile());
     }
 
     public File getPath() {
