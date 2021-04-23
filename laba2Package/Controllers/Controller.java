@@ -31,12 +31,13 @@ public class Controller {
         try {
             File fileToLoadStudents = view.getXmlFileChooser().getPath();
             if (fileToLoadStudents == null) return;
-            studentsModel.loadStudentsFromFile(fileToLoadStudents);
+            int incorrectStudents = studentsModel.loadStudentsFromFile(fileToLoadStudents);
             view.getViewerOfPages().setStudentsToDisplay(studentsModel.getStudents());
             updateView();
-            JOptionPane.showMessageDialog(view.getMainFrame(), "Students loaded successfully");
+            JOptionPane.showMessageDialog(view.getMainFrame(),
+                    "Students loaded successfully\n" + incorrectStudents + " - students were incorrectly recorded in the file ");
         } catch (IOException | SAXException | ParserConfigurationException e) {
-            JOptionPane.showMessageDialog(view.getMainFrame(), "Cant load students from file");
+            JOptionPane.showMessageDialog(view.getMainFrame(), "Unable to load students from file");
         }
     }
 
@@ -48,7 +49,7 @@ public class Controller {
             needToSaveData = false;
             JOptionPane.showMessageDialog(view.getMainFrame(), "Students saved successfully");
         } catch (IOException | SAXException | ParserConfigurationException | TransformerException e) {
-            JOptionPane.showMessageDialog(view.getMainFrame(), "Cant save students to file");
+            JOptionPane.showMessageDialog(view.getMainFrame(), "Unable to save students to file");
         }
     }
 
@@ -62,8 +63,11 @@ public class Controller {
             needToSaveData = true;
             updateView();
             JOptionPane.showMessageDialog(view.getAddStudentDialog(), "Student added successfully");
-        } catch (NumberFormatException | StudentException e) {
+        } catch (StudentException e) {
             JOptionPane.showMessageDialog(view.getAddStudentDialog(), e.getMessage());
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(view.getAddStudentDialog(),
+                    "You must specify an integer value in the fields \"course\", \"number of tasks\" and \"number of completed tasks\"");
         }
     }
 
@@ -78,8 +82,10 @@ public class Controller {
                 view.getDeleteStudentsDialog().getValueForSearch());
         studentsModel.removeStudents(studentsToRemove);
         view.getDeleteStudentsDialog().setVisible(false);
-        updateView();
-        if (studentsToRemove.size() > 0) needToSaveData = true;
+        if (studentsToRemove.size() > 0) {
+            updateView();
+            needToSaveData = true;
+        }
         JOptionPane.showMessageDialog(view.getMainFrame(), studentsToRemove.size() + " students were removed");
     }
 

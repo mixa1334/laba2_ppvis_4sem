@@ -8,6 +8,7 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Objects;
 
 public class ViewerOfPages extends JPanel {
 
@@ -133,7 +134,7 @@ public class ViewerOfPages extends JPanel {
 
         });
         notesPerPageJComboBox.addActionListener(e -> {
-            this.notesPerPage = ((NotesPerPageEnum) notesPerPageJComboBox.getSelectedItem()).getValue();
+            this.notesPerPage = ((NotesPerPageEnum) Objects.requireNonNull(notesPerPageJComboBox.getSelectedItem())).getValue();
             resetPageView();
         });
     }

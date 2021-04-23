@@ -19,6 +19,21 @@ public class StudentSAX {
     private static class StudentHandler extends DefaultHandler {
         private Student student;
         private String field;
+        private int incorrectlyEnteredStudents;
+        private final ArrayList<String> allStudentFields;
+
+        public StudentHandler() {
+            incorrectlyEnteredStudents = 0;
+            allStudentFields = new ArrayList<>(8);
+            for (Field tempField : Student.class.getDeclaredFields()) {
+                allStudentFields.add(tempField.getName());
+            }
+        }
+
+        public int getIncorrectlyEnteredStudents() {
+            return incorrectlyEnteredStudents;
+        }
+
 
         @Override
         public void startElement(String uri, String localName, String qName, Attributes attributes) {
@@ -31,6 +46,7 @@ public class StudentSAX {
         @Override
         public void characters(char[] ch, int start, int length) {
             if (student == null) return;
+            if (allStudentFields.stream().noneMatch(field::equals)) return;
             try {
                 Field fieldToWrite = Student.class.getDeclaredField(field);
                 fieldToWrite.setAccessible(true);
@@ -40,7 +56,7 @@ public class StudentSAX {
                     fieldToWrite.set(student, String.copyValueOf(ch, start, length));
                 }
             } catch (NoSuchFieldException | IllegalAccessException e) {
-                //e.printStackTrace();
+                e.printStackTrace();
             }
         }
 
@@ -50,7 +66,7 @@ public class StudentSAX {
                 try {
                     students.add(new Student(student));
                 } catch (StudentException e) {
-                    //e.printStackTrace();
+                    incorrectlyEnteredStudents++;
                 }
                 student = null;
             }
@@ -58,15 +74,15 @@ public class StudentSAX {
         }
     }
 
-
-    public static ArrayList<Student> readStudents(File file) throws ParserConfigurationException, SAXException, IOException, NumberFormatException {
+    public static PairOfLoadedAndIncorrectlyStudents readStudents(File file) throws ParserConfigurationException, SAXException, IOException, NumberFormatException {
 
         SAXParserFactory factory = SAXParserFactory.newInstance();
         SAXParser saxParser = factory.newSAXParser();
 
         students = new ArrayList<>();
 
-        saxParser.parse(file, new StudentHandler());
-        return students;
+        StudentHandler studentHandler = new StudentHandler();
+        saxParser.parse(file, studentHandler);
+        return new PairOfLoadedAndIncorrectlyStudents(students, studentHandler.getIncorrectlyEnteredStudents());
     }
 }

@@ -1,6 +1,6 @@
 package laba2Package.Models;
 
-import laba2Package.Exceptions.StudentModelException;
+
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -9,8 +9,6 @@ import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.TreeSet;
 import java.util.stream.Collectors;
 
@@ -22,14 +20,14 @@ public class StudentsModel {
     private TreeSet<String> allNumberOfCompletedTasks;
 
     public StudentsModel() {
-        clear();
-    }
-
-    public void clear() {
         students = new ArrayList<>(50);
         allProgrammingLanguages = new TreeSet<>();
         allNumberOfTasks = new TreeSet<>();
         allNumberOfCompletedTasks = new TreeSet<>();
+    }
+
+    public ArrayList<Student> getStudents() {
+        return students;
     }
 
     public void addStudent(Student student) {
@@ -38,37 +36,16 @@ public class StudentsModel {
         update();
     }
 
-    public ArrayList<Student> searchStudents(Student.AllCriteria searchCriteria, String criteria) {
-        //if (criteria == null) throw new StudentModelException("Empty criteria");
-        try {
-            Field field = Student.class.getDeclaredField(searchCriteria.getValue());
-            field.setAccessible(true);
-            return students.stream().filter(student -> {
-                try {
-                    return (field.get(student)).toString().equals(criteria);
-                } catch (IllegalAccessException e) {
-                    e.printStackTrace();
-                }
-                return false;
-            }).collect(Collectors.toCollection(ArrayList::new));
-        } catch (NoSuchFieldException e) {
-            e.printStackTrace();
-        }
-        return new ArrayList<>();
-    }
-
     public void removeStudents(ArrayList<Student> studentsToRemove) {
         this.students.removeAll(studentsToRemove);
         update();
     }
 
-    public ArrayList<Student> getStudents() {
-        return students;
-    }
-
-    public void loadStudentsFromFile(File file) throws IOException, SAXException, ParserConfigurationException {
-        this.students = StudentSAX.readStudents(file);
+    public int loadStudentsFromFile(File file) throws IOException, SAXException, ParserConfigurationException {
+        PairOfLoadedAndIncorrectlyStudents pair = StudentSAX.readStudents(file);
+        this.students = pair.getListOfLoadedStudents();
         update();
+        return pair.getIncorrectlyEnteredStudents();
     }
 
     public void saveStudentsToFile(File file) throws IOException, SAXException, ParserConfigurationException, TransformerException {
@@ -85,7 +62,24 @@ public class StudentsModel {
 
     public String[] getAllNumberOfCompletedTasks() {
         return allNumberOfCompletedTasks.toArray(new String[0]);
+    }
 
+    public ArrayList<Student> searchStudents(Student.AllCriteria searchCriteria, String criteria) {
+        try {
+            Field field = Student.class.getDeclaredField(searchCriteria.getValue());
+            field.setAccessible(true);
+            return students.stream().filter(student -> {
+                try {
+                    return (field.get(student)).toString().equals(criteria);
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                }
+                return false;
+            }).collect(Collectors.toCollection(ArrayList::new));
+        } catch (NoSuchFieldException e) {
+            e.printStackTrace();
+        }
+        return new ArrayList<>();
     }
 
     private void setAllProgrammingLanguages() {

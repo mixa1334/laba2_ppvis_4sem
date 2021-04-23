@@ -16,7 +16,6 @@ public class SearchStudentsDialog extends CustomDialog {
     public SearchStudentsDialog(JFrame jFrame) {
         super(jFrame, "Search students");
 
-        //setLayout(new BorderLayout(5, 5));
         JPanel jPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         viewerOfPages = new ViewerOfPages();
         searchStudentJPanel = new SearchStudentJPanel();

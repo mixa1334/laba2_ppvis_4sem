@@ -21,6 +21,8 @@ public class Student {
     }
 
     public Student(String fio, int course, String group, int numberOfTasks, int numberOfCompletedTasks, String programmingLanguage) throws StudentException {
+        if (fio == null || group == null || programmingLanguage == null)
+            throw new StudentException("parameters cant be null");
         if (numberOfTasks < 0)
             throw new StudentException("Number of tasks cant be <0");
         if (numberOfCompletedTasks < 0 || numberOfCompletedTasks > numberOfTasks)
