@@ -3,7 +3,7 @@
     <Student>
         <fio>Kravczov Michail Sergeevich</fio>
         <course>2</course>
-        <grupa>921703</grupa>
+        <group>921703</group>
         <numberOfTasks>4</numberOfTasks>
         <numberOfCompletedTasks>2</numberOfCompletedTasks>
         <programmingLanguage>java</programmingLanguage>
@@ -11,7 +11,7 @@
     <Student>
         <fio>Valukevich Vladimir Igorevich</fio>
         <course>2</course>
-        <grupa>921705</grupa>
+        <group>921705</group>
         <numberOfTasks>4</numberOfTasks>
         <numberOfCompletedTasks>3</numberOfCompletedTasks>
         <programmingLanguage>c++</programmingLanguage>
@@ -19,7 +19,7 @@
     <Student>
         <fio>Vasilevski Artemy Dmitrievich</fio>
         <course>3</course>
-        <grupa>678790</grupa>
+        <group>678790</group>
         <numberOfTasks>4</numberOfTasks>
         <numberOfCompletedTasks>1</numberOfCompletedTasks>
         <programmingLanguage>java</programmingLanguage>
@@ -27,7 +27,7 @@
     <Student>
         <fio>Ivashkin Igor Aleekseevich</fio>
         <course>5</course>
-        <grupa>798340</grupa>
+        <group>798340</group>
         <numberOfTasks>3</numberOfTasks>
         <numberOfCompletedTasks>2</numberOfCompletedTasks>
         <programmingLanguage>java</programmingLanguage>
@@ -35,7 +35,7 @@
     <Student>
         <fio>Griboski Arsen Dmitrievich</fio>
         <course>2</course>
-        <grupa>921703</grupa>
+        <group>921703</group>
         <numberOfTasks>8</numberOfTasks>
         <numberOfCompletedTasks>7</numberOfCompletedTasks>
         <programmingLanguage>c</programmingLanguage>
