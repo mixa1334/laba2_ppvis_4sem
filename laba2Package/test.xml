@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <students>
     <Student>
-        <fio>Kravc Mihail Sergeevich</fio>
+        <fio>Kravczov Michail Sergeevich</fio>
         <course>2</course>
         <grupa>921703</grupa>
         <numberOfTasks>4</numberOfTasks>
@@ -9,75 +9,35 @@
         <programmingLanguage>java</programmingLanguage>
     </Student>
     <Student>
-        <fio>Kravc Mihail Sergeevich</fio>
+        <fio>Valukevich Vladimir Igorevich</fio>
         <course>2</course>
-        <group>921703</group>
+        <grupa>921705</grupa>
         <numberOfTasks>4</numberOfTasks>
-        <numberOfCompletedTasks>2</numberOfCompletedTasks>
-        <programmingLanguage>java</programmingLanguage>
-    </Student>
-    <Student>
-        <fio>Radukevich Max Sergeevich</fio>
-        <course>1</course>
-        <group>101789</group>
-        <numberOfTasks>5</numberOfTasks>
-        <numberOfCompletedTasks>3</numberOfCompletedTasks>
-        <programmingLanguage>js</programmingLanguage>
-    </Student>
-    <Student>
-        <fio>Zubenko Michail Petrovich</fio>
-        <course>4</course>
-        <group>mafioznik</group>
-        <numberOfTasks>3</numberOfTasks>
         <numberOfCompletedTasks>3</numberOfCompletedTasks>
         <programmingLanguage>c++</programmingLanguage>
     </Student>
     <Student>
-        <fio>kravczova natalia nikolaevna</fio>
-        <course>2</course>
-        <group>1</group>
-        <numberOfTasks>4</numberOfTasks>
-        <numberOfCompletedTasks>3</numberOfCompletedTasks>
-        <programmingLanguage>assembler</programmingLanguage>
-    </Student>
-    <Student>
-        <fio>kravczov serg sergeevich</fio>
-        <course>4</course>
-        <group>15</group>
-        <numberOfTasks>10</numberOfTasks>
-        <numberOfCompletedTasks>9</numberOfCompletedTasks>
-        <programmingLanguage>fortran</programmingLanguage>
-    </Student>
-    <Student>
-        <fio>visevka vyacheslav stepanovich</fio>
-        <course>5</course>
-        <group>89</group>
-        <numberOfTasks>5</numberOfTasks>
-        <numberOfCompletedTasks>3</numberOfCompletedTasks>
-        <programmingLanguage>c#</programmingLanguage>
-    </Student>
-    <Student>
-        <fio>Gleb Muravitski PGM</fio>
-        <course>2</course>
-        <group>921703</group>
+        <fio>Vasilevski Artemy Dmitrievich</fio>
+        <course>3</course>
+        <grupa>678790</grupa>
         <numberOfTasks>4</numberOfTasks>
         <numberOfCompletedTasks>1</numberOfCompletedTasks>
-        <programmingLanguage>1c</programmingLanguage>
-    </Student>
-    <Student>
-        <fio>Kozlovski konstantin Urevich</fio>
-        <course>4</course>
-        <group>1</group>
-        <numberOfTasks>6</numberOfTasks>
-        <numberOfCompletedTasks>2</numberOfCompletedTasks>
-        <programmingLanguage>js</programmingLanguage>
-    </Student>
-    <Student>
-        <fio>Nekrashivich Ivan Govno</fio>
-        <course>2</course>
-        <group>777</group>
-        <numberOfTasks>10</numberOfTasks>
-        <numberOfCompletedTasks>8</numberOfCompletedTasks>
         <programmingLanguage>java</programmingLanguage>
+    </Student>
+    <Student>
+        <fio>Ivashkin Igor Aleekseevich</fio>
+        <course>5</course>
+        <grupa>798340</grupa>
+        <numberOfTasks>3</numberOfTasks>
+        <numberOfCompletedTasks>2</numberOfCompletedTasks>
+        <programmingLanguage>java</programmingLanguage>
+    </Student>
+    <Student>
+        <fio>Griboski Arsen Dmitrievich</fio>
+        <course>2</course>
+        <grupa>921703</grupa>
+        <numberOfTasks>8</numberOfTasks>
+        <numberOfCompletedTasks>7</numberOfCompletedTasks>
+        <programmingLanguage>c</programmingLanguage>
     </Student>
 </students>
