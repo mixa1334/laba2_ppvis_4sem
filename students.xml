@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<students>
+    <Student>
+        <fio>Kravczov Michail Sergeevich</fio>
+        <course>2</course>
+        <group>921703</group>
+        <numberOfTasks>4</numberOfTasks>
+        <numberOfCompletedTasks>2</numberOfCompletedTasks>
+        <programmingLanguage>java</programmingLanguage>
+    </Student>
+    <Student>
+        <fio>Radukevich Maxim Sergeevich</fio>
+        <course>1</course>
+        <group>152201</group>
+        <numberOfTasks>7</numberOfTasks>
+        <numberOfCompletedTasks>3</numberOfCompletedTasks>
+        <programmingLanguage>js</programmingLanguage>
+    </Student>
+    <Student>
+        <fio>Visevka Vaycheslav Stepanovich</fio>
+        <course>5</course>
+        <group>563123</group>
+        <numberOfTasks>12</numberOfTasks>
+        <numberOfCompletedTasks>9</numberOfCompletedTasks>
+        <programmingLanguage>c++</programmingLanguage>
+    </Student>
+    <Student>
+        <fio>Kozlovski konstantin Urevich</fio>
+        <course>4</course>
+        <group>789120</group>
+        <numberOfTasks>13</numberOfTasks>
+        <numberOfCompletedTasks>4</numberOfCompletedTasks>
+        <programmingLanguage>c#</programmingLanguage>
+    </Student>
+    <Student>
+        <fio>Babei Egor Sergeevich</fio>
+        <course>1</course>
+        <group>85210a</group>
+        <numberOfTasks>1</numberOfTasks>
+        <numberOfCompletedTasks>0</numberOfCompletedTasks>
+        <programmingLanguage>PHP</programmingLanguage>
+    </Student>
+    <Student>
+        <fio>Gorelik Dmitri Nikolaevich</fio>
+        <course>3</course>
+        <group>54b</group>
+        <numberOfTasks>9</numberOfTasks>
+        <numberOfCompletedTasks>2</numberOfCompletedTasks>
+        <programmingLanguage>c++</programmingLanguage>
+    </Student>
+    <Student>
+        <fio>Ivanovskaya Viktoria Andreevna</fio>
+        <course>4</course>
+        <group>10a</group>
+        <numberOfTasks>4</numberOfTasks>
+        <numberOfCompletedTasks>4</numberOfCompletedTasks>
+        <programmingLanguage>ruby</programmingLanguage>
+    </Student>
+    <Student>
+        <fio>Fomenko Egor Andreevich</fio>
+        <course>2</course>
+        <group>10102c</group>
+        <numberOfTasks>6</numberOfTasks>
+        <numberOfCompletedTasks>5</numberOfCompletedTasks>
+        <programmingLanguage>dart</programmingLanguage>
+    </Student>
+    <Student>
+        <fio>Tarasova Ekaterina Sergeevna</fio>
+        <course>4</course>
+        <group>898451</group>
+        <numberOfTasks>10</numberOfTasks>
+        <numberOfCompletedTasks>1</numberOfCompletedTasks>
+        <programmingLanguage>ruby</programmingLanguage>
+    </Student>
+    <Student>
+        <fio>Gasanov Renat Valerivich</fio>
+        <course>3</course>
+        <group>45621a</group>
+        <numberOfTasks>9</numberOfTasks>
+        <numberOfCompletedTasks>7</numberOfCompletedTasks>
+        <programmingLanguage>java</programmingLanguage>
+    </Student>
+    <Student>
+        <fio>Tutova Polina Pavlovna</fio>
+        <course>1</course>
+        <group>561230</group>
+        <numberOfTasks>2</numberOfTasks>
+        <numberOfCompletedTasks>1</numberOfCompletedTasks>
+        <programmingLanguage>java</programmingLanguage>
+    </Student>
+    <Student>
+        <fio>Vasilek Anna Aleksandrovna</fio>
+        <course>2</course>
+        <group>456102</group>
+        <numberOfTasks>8</numberOfTasks>
+        <numberOfCompletedTasks>8</numberOfCompletedTasks>
+        <programmingLanguage>js</programmingLanguage>
+    </Student>
+    <Student>
+        <fio>Gribovski Arseni Dmitrievich</fio>
+        <course>2</course>
+        <group>921703</group>
+        <numberOfTasks>4</numberOfTasks>
+        <numberOfCompletedTasks>1</numberOfCompletedTasks>
+        <programmingLanguage>java</programmingLanguage>
+    </Student>
+    <Student>
+        <fio>Do Chi Than</fio>
+        <course>3</course>
+        <group>921023</group>
+        <numberOfTasks>6</numberOfTasks>
+        <numberOfCompletedTasks>6</numberOfCompletedTasks>
+        <programmingLanguage>c#</programmingLanguage>
+    </Student>
+    <Student>
+        <fio>Kapitanov Egor Alekseevich</fio>
+        <course>5</course>
+        <group>802301</group>
+        <numberOfTasks>7</numberOfTasks>
+        <numberOfCompletedTasks>5</numberOfCompletedTasks>
+        <programmingLanguage>PHP</programmingLanguage>
+    </Student>
+    <Student>
+        <fio>Nekrashevich Ivan Dritrievich</fio>
+        <course>2</course>
+        <group>923506</group>
+        <numberOfTasks>8</numberOfTasks>
+        <numberOfCompletedTasks>3</numberOfCompletedTasks>
+        <programmingLanguage>c</programmingLanguage>
+    </Student>
+    <Student>
+        <fio>Gernovich Alex Andreevich</fio>
+        <course>2</course>
+        <group>895421</group>
+        <numberOfTasks>9</numberOfTasks>
+        <numberOfCompletedTasks>8</numberOfCompletedTasks>
+        <programmingLanguage>c</programmingLanguage>
+    </Student>
+</students>
