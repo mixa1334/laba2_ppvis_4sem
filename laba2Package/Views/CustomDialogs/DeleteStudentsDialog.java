@@ -1,10 +1,12 @@
 package laba2Package.Views.CustomDialogs;
 
 import laba2Package.Models.Student;
+import laba2Package.Views.MyButton;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.nio.file.Paths;
 
 public class DeleteStudentsDialog extends CustomDialog {
 
@@ -12,12 +14,12 @@ public class DeleteStudentsDialog extends CustomDialog {
     private final JButton deleteStudentsJButton;
 
     public DeleteStudentsDialog(JFrame jFrame) {
-        super(jFrame, "Delete students");
+        super(jFrame, "Удаление студентов");
 
         setLayout(new BorderLayout(5, 5));
 
         searchStudentJPanel = new SearchStudentJPanel();
-        deleteStudentsJButton = new JButton("Delete students!");
+        deleteStudentsJButton = new MyButton("Удалить студентов");
         JPanel buttonJPanel = new JPanel();
         buttonJPanel.add(deleteStudentsJButton);
         getContentPane().add(searchStudentJPanel, BorderLayout.CENTER);

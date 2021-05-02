@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <students>
     <Student>
-        <fio>Kravczov Michail Sergeevich</fio>
+        <fio>Кравцов Михаил Сергеевич</fio>
         <course>2</course>
         <group>921703</group>
         <numberOfTasks>4</numberOfTasks>
@@ -9,7 +9,7 @@
         <programmingLanguage>java</programmingLanguage>
     </Student>
     <Student>
-        <fio>Radukevich Maxim Sergeevich</fio>
+        <fio>Радюкечив Максим Сергеевич</fio>
         <course>1</course>
         <group>152201</group>
         <numberOfTasks>7</numberOfTasks>
@@ -17,7 +17,7 @@
         <programmingLanguage>js</programmingLanguage>
     </Student>
     <Student>
-        <fio>Visevka Vaycheslav Stepanovich</fio>
+        <fio>Высевка Вячеслав Степанович</fio>
         <course>5</course>
         <group>563123</group>
         <numberOfTasks>12</numberOfTasks>
@@ -25,7 +25,7 @@
         <programmingLanguage>c++</programmingLanguage>
     </Student>
     <Student>
-        <fio>Kozlovski konstantin Urevich</fio>
+        <fio>Козловский Константин Юрьевич</fio>
         <course>4</course>
         <group>789120</group>
         <numberOfTasks>13</numberOfTasks>
@@ -33,39 +33,39 @@
         <programmingLanguage>c#</programmingLanguage>
     </Student>
     <Student>
-        <fio>Babei Egor Sergeevich</fio>
+        <fio>Бабей Егор Сергеевич</fio>
         <course>1</course>
-        <group>85210a</group>
+        <group>852103</group>
         <numberOfTasks>1</numberOfTasks>
         <numberOfCompletedTasks>0</numberOfCompletedTasks>
-        <programmingLanguage>PHP</programmingLanguage>
+        <programmingLanguage>php</programmingLanguage>
     </Student>
     <Student>
-        <fio>Gorelik Dmitri Nikolaevich</fio>
+        <fio>Горилик Дмитрий Николаевич</fio>
         <course>3</course>
-        <group>54b</group>
+        <group>921809</group>
         <numberOfTasks>9</numberOfTasks>
         <numberOfCompletedTasks>2</numberOfCompletedTasks>
         <programmingLanguage>c++</programmingLanguage>
     </Student>
     <Student>
-        <fio>Ivanovskaya Viktoria Andreevna</fio>
+        <fio>Ивановская Виктория Андреевна</fio>
         <course>4</course>
-        <group>10a</group>
+        <group>108902</group>
         <numberOfTasks>4</numberOfTasks>
         <numberOfCompletedTasks>4</numberOfCompletedTasks>
         <programmingLanguage>ruby</programmingLanguage>
     </Student>
     <Student>
-        <fio>Fomenko Egor Andreevich</fio>
+        <fio>Фоменко Егор андреевич</fio>
         <course>2</course>
-        <group>10102c</group>
+        <group>108902</group>
         <numberOfTasks>6</numberOfTasks>
         <numberOfCompletedTasks>5</numberOfCompletedTasks>
         <programmingLanguage>dart</programmingLanguage>
     </Student>
     <Student>
-        <fio>Tarasova Ekaterina Sergeevna</fio>
+        <fio>Тарасова Екатерина Сергеевна</fio>
         <course>4</course>
         <group>898451</group>
         <numberOfTasks>10</numberOfTasks>
@@ -73,15 +73,15 @@
         <programmingLanguage>ruby</programmingLanguage>
     </Student>
     <Student>
-        <fio>Gasanov Renat Valerivich</fio>
+        <fio>Гасанов Ренат Валерьевич</fio>
         <course>3</course>
-        <group>45621a</group>
+        <group>898451</group>
         <numberOfTasks>9</numberOfTasks>
         <numberOfCompletedTasks>7</numberOfCompletedTasks>
         <programmingLanguage>java</programmingLanguage>
     </Student>
     <Student>
-        <fio>Tutova Polina Pavlovna</fio>
+        <fio>Тутова Полина Павловна</fio>
         <course>1</course>
         <group>561230</group>
         <numberOfTasks>2</numberOfTasks>
@@ -89,7 +89,7 @@
         <programmingLanguage>java</programmingLanguage>
     </Student>
     <Student>
-        <fio>Vasilek Anna Aleksandrovna</fio>
+        <fio>Василек Анна Александровна</fio>
         <course>2</course>
         <group>456102</group>
         <numberOfTasks>8</numberOfTasks>
@@ -97,7 +97,7 @@
         <programmingLanguage>js</programmingLanguage>
     </Student>
     <Student>
-        <fio>Gribovski Arseni Dmitrievich</fio>
+        <fio>Грибовский Арсений Дмитриевич</fio>
         <course>2</course>
         <group>921703</group>
         <numberOfTasks>4</numberOfTasks>
@@ -105,7 +105,7 @@
         <programmingLanguage>java</programmingLanguage>
     </Student>
     <Student>
-        <fio>Do Chi Than</fio>
+        <fio>Ду Чи Чан</fio>
         <course>3</course>
         <group>921023</group>
         <numberOfTasks>6</numberOfTasks>
@@ -113,15 +113,15 @@
         <programmingLanguage>c#</programmingLanguage>
     </Student>
     <Student>
-        <fio>Kapitanov Egor Alekseevich</fio>
+        <fio>Капитов Егор Алексеевич</fio>
         <course>5</course>
         <group>802301</group>
         <numberOfTasks>7</numberOfTasks>
         <numberOfCompletedTasks>5</numberOfCompletedTasks>
-        <programmingLanguage>PHP</programmingLanguage>
+        <programmingLanguage>php</programmingLanguage>
     </Student>
     <Student>
-        <fio>Nekrashevich Ivan Dritrievich</fio>
+        <fio>Некрашевич Иван Дмитриевич</fio>
         <course>2</course>
         <group>923506</group>
         <numberOfTasks>8</numberOfTasks>
@@ -129,7 +129,7 @@
         <programmingLanguage>c</programmingLanguage>
     </Student>
     <Student>
-        <fio>Gernovich Alex Andreevich</fio>
+        <fio>Гернович Алексей Андреевич</fio>
         <course>2</course>
         <group>895421</group>
         <numberOfTasks>9</numberOfTasks>

@@ -1,11 +1,11 @@
 package laba2Package.Views;
 
-import laba2Package.Exceptions.ViewerOfPagesException;
 import laba2Package.Models.Student;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Objects;
@@ -19,7 +19,7 @@ public class ViewerOfPages extends JPanel {
     private final JButton lastPageButton;
     private final JButton firstPageButton;
     private final JButton previousPageButton;
-    private final JComboBox<NotesPerPageEnum> notesPerPageJComboBox;
+    private final JComboBox<String> notesPerPageJComboBox;
     private ArrayList<Student> students;
     private int currentPageNumber;
     private int notesPerPage;
@@ -32,16 +32,18 @@ public class ViewerOfPages extends JPanel {
         JLabel notesPerPageLAbel = new JLabel();
         JPanel downPanel = new JPanel();
         JPanel upPanel = new JPanel();
-        nextPageButton = new JButton(">");
-        lastPageButton = new JButton(">>");
-        firstPageButton = new JButton("<<");
-        previousPageButton = new JButton("<");
+
+        nextPageButton = new MyButton(Paths.get("Pictures//next-page.png").toFile());
+        lastPageButton = new MyButton(Paths.get("Pictures//last-page.png").toFile());
+        firstPageButton = new MyButton(Paths.get("Pictures//first-page.png").toFile());
+        previousPageButton = new MyButton(Paths.get("Pictures//previous-page.png").toFile());
+
         JTable jTable = new JTable();
 
-        notesPerPageJComboBox = new JComboBox<>(NotesPerPageEnum.values());
+        notesPerPageJComboBox = new JComboBox<>(NotesPerPageEnum.getAllNames());
 
-        notesPerPageLAbel.setText("Display students on page  - ");
-        countOfStudentsLabel.setText("Number of all students : " + students.size());
+        notesPerPageLAbel.setText("Показывать студентов на странице  - ");
+        countOfStudentsLabel.setText("Число всех студентов : " + students.size());
         numberOfCurrentPageLabel.setText(currentPageNumber + "/" + allPagesCount);
 
         notesPerPage = NotesPerPageEnum.FIVE.getValue();
@@ -49,6 +51,7 @@ public class ViewerOfPages extends JPanel {
         tableModel = new DefaultTableModel();
         String[] names = Arrays.copyOf(Student.AllCriteria.getAllName(),
                 Student.AllCriteria.getAllName().length - 1);
+
         tableModel.setColumnIdentifiers(names);
         jTable.setModel(tableModel);
 
@@ -65,6 +68,7 @@ public class ViewerOfPages extends JPanel {
         add(new JScrollPane(jTable), BorderLayout.CENTER);
         add(downPanel, BorderLayout.SOUTH);
         add(upPanel, BorderLayout.NORTH);
+        setPreferredSize(new Dimension(1000, 600));
 
         initActions();
         resetPageView();
@@ -91,7 +95,7 @@ public class ViewerOfPages extends JPanel {
 
     private void displayPage() {
         tableModel.setRowCount(0);
-        countOfStudentsLabel.setText("Number of all students : " + students.size());
+        countOfStudentsLabel.setText("Число всех студентов : " + students.size());
         numberOfCurrentPageLabel.setText(currentPageNumber + "/" + allPagesCount);
         if (students.size() == 0) return;
         getStudentsToDisplay().forEach(student -> {
@@ -134,24 +138,45 @@ public class ViewerOfPages extends JPanel {
 
         });
         notesPerPageJComboBox.addActionListener(e -> {
-            this.notesPerPage = ((NotesPerPageEnum) Objects.requireNonNull(notesPerPageJComboBox.getSelectedItem())).getValue();
+            String selectedEnum = Objects.requireNonNull(notesPerPageJComboBox.getSelectedItem()).toString();
+            if (selectedEnum.equals(NotesPerPageEnum.FIVE.name)) {
+                this.notesPerPage = NotesPerPageEnum.FIVE.numValue;
+            } else if (selectedEnum.equals(NotesPerPageEnum.TEN.name)) {
+                this.notesPerPage = NotesPerPageEnum.TEN.numValue;
+            } else if (selectedEnum.equals(NotesPerPageEnum.FIFTY.name)) {
+                this.notesPerPage = NotesPerPageEnum.FIFTY.numValue;
+            }
             resetPageView();
         });
     }
 
     private enum NotesPerPageEnum {
-        FIVE(5),
-        TEN(10),
-        FIFTY(50);
+        FIVE(5, "пять"),
+        TEN(10, "десять"),
+        FIFTY(50, "петьдесят");
 
         private final int numValue;
+        private final String name;
 
-        NotesPerPageEnum(int numValue) {
+        NotesPerPageEnum(final int numValue, final String name) {
             this.numValue = numValue;
+            this.name = name;
         }
 
         public int getValue() {
             return numValue;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public static String[] getAllNames() {
+            return new String[]{FIVE.name, TEN.name, FIFTY.name};
+        }
+
+        public static int[] getAllValues() {
+            return new int[]{FIVE.numValue, TEN.numValue, FIFTY.numValue};
         }
     }
 }

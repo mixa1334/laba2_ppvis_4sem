@@ -1,12 +1,14 @@
 package laba2Package.Views.CustomDialogs;
 
 import laba2Package.Models.Student;
+import laba2Package.Views.MyButton;
 import laba2Package.Views.ViewerOfPages;
 
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.nio.file.Paths;
 
 public class SearchStudentsDialog extends CustomDialog {
     private final SearchStudentJPanel searchStudentJPanel;
@@ -14,13 +16,12 @@ public class SearchStudentsDialog extends CustomDialog {
     private final ViewerOfPages viewerOfPages;
 
     public SearchStudentsDialog(JFrame jFrame) {
-        super(jFrame, "Search students");
+        super(jFrame, "Поиск студентов");
 
         JPanel jPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         viewerOfPages = new ViewerOfPages();
         searchStudentJPanel = new SearchStudentJPanel();
-        searchStudentsJButton = new JButton("Search students!");
-        searchStudentsJButton.setSize(100, 50);
+        searchStudentsJButton = new MyButton(Paths.get("Pictures//search-students.png").toFile());
         JPanel searchButtonJPanel = new JPanel();
         searchButtonJPanel.add(searchStudentsJButton);
         JPanel searchPanel = new JPanel(new BorderLayout(5, 15));

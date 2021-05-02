@@ -24,7 +24,19 @@ public class Controller {
         this.view = view;
         this.studentsModel = studentsModel;
         needToSaveData = false;
-        init();
+        view.getViewerOfPages().setStudentsToDisplay(studentsModel.getStudents());
+        view.getAddStudentDialog().setActionToAddStudentJButton(e -> addStudents());
+        view.getSearchStudentsDialog().setActionToDeleteStudentsJButton(e -> searchStudents());
+        view.getDeleteStudentsDialog().setActionToDeleteStudentsJButton(e -> deleteStudents());
+        view.setActionToLoadFileButtons(e -> loadStudentsFromFile());
+        view.setActionToSaveFileButtons(e -> saveStudentsToFile());
+        view.getMainFrame().setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        view.getMainFrame().addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                closingFrameAction();
+            }
+        });
     }
 
     public void loadStudentsFromFile() {
@@ -35,9 +47,9 @@ public class Controller {
             view.getViewerOfPages().setStudentsToDisplay(studentsModel.getStudents());
             updateView();
             JOptionPane.showMessageDialog(view.getMainFrame(),
-                    "Students loaded successfully\n" + incorrectStudents + " - students were incorrectly recorded in the file ");
+                    "Данные загружены успешно!\n" + incorrectStudents + " - число неверно записанных студенты в файле");
         } catch (IOException | SAXException | ParserConfigurationException e) {
-            JOptionPane.showMessageDialog(view.getMainFrame(), "Unable to load students from file");
+            JOptionPane.showMessageDialog(view.getMainFrame(), "Невозможно открыть файл!");
         }
     }
 
@@ -47,9 +59,9 @@ public class Controller {
             if (fileToSaveStudents == null) return;
             studentsModel.saveStudentsToFile(fileToSaveStudents);
             needToSaveData = false;
-            JOptionPane.showMessageDialog(view.getMainFrame(), "Students saved successfully");
+            JOptionPane.showMessageDialog(view.getMainFrame(), "Данные сохранены успешно!");
         } catch (IOException | SAXException | ParserConfigurationException | TransformerException e) {
-            JOptionPane.showMessageDialog(view.getMainFrame(), "Unable to save students to file");
+            JOptionPane.showMessageDialog(view.getMainFrame(), "Невозможно открыть файл!");
         }
     }
 
@@ -62,12 +74,12 @@ public class Controller {
             view.getAddStudentDialog().clearTextFields();
             needToSaveData = true;
             updateView();
-            JOptionPane.showMessageDialog(view.getAddStudentDialog(), "Student added successfully");
+            JOptionPane.showMessageDialog(view.getAddStudentDialog(), "Студент был добавлен!");
         } catch (StudentException e) {
             JOptionPane.showMessageDialog(view.getAddStudentDialog(), e.getMessage());
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(view.getAddStudentDialog(),
-                    "You must specify an integer value in the fields \"course\", \"number of tasks\" and \"number of completed tasks\"");
+                    "Поля \"Курс\"\\\"Общее число работ\"\\\"Количество выполненных работ\" должны содержать целочисленные значения!");
         }
     }
 
@@ -86,13 +98,13 @@ public class Controller {
             updateView();
             needToSaveData = true;
         }
-        JOptionPane.showMessageDialog(view.getMainFrame(), studentsToRemove.size() + " students were removed");
+        JOptionPane.showMessageDialog(view.getMainFrame(), "Студентов было удалено: " + studentsToRemove.size());
     }
 
     public void closingFrameAction() {
         if (needToSaveData) {
             if (JOptionPane.showConfirmDialog(view.getMainFrame(),
-                    "Data was not saved. Do you want to save it?", "Save data?",
+                    "Данные не были сохранены. Желаете их сохранить?", "Сохранить данные?",
                     JOptionPane.YES_NO_OPTION,
                     JOptionPane.QUESTION_MESSAGE) == JOptionPane.NO_OPTION) {
                 System.exit(0);
@@ -112,21 +124,5 @@ public class Controller {
         view.getDeleteStudentsDialog().setAllNumberOfCompletedTasks(studentsModel.getAllNumberOfCompletedTasks());
         view.getDeleteStudentsDialog().setAllNumberOfTasks(studentsModel.getAllNumberOfTasks());
         view.getDeleteStudentsDialog().setAllProgrammingLanguages(studentsModel.getAllProgrammingLanguages());
-    }
-
-    private void init() {
-        view.getViewerOfPages().setStudentsToDisplay(studentsModel.getStudents());
-        view.getAddStudentDialog().setActionToAddStudentJButton(e -> addStudents());
-        view.getSearchStudentsDialog().setActionToDeleteStudentsJButton(e -> searchStudents());
-        view.getDeleteStudentsDialog().setActionToDeleteStudentsJButton(e -> deleteStudents());
-        view.setActionToLoadFileButtons(e -> loadStudentsFromFile());
-        view.setActionToSaveFileButtons(e -> saveStudentsToFile());
-        view.getMainFrame().setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-        view.getMainFrame().addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent e) {
-                closingFrameAction();
-            }
-        });
     }
 }

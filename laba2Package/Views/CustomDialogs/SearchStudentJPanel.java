@@ -6,34 +6,51 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-public class SearchStudentJPanel extends JPanel implements ActionListener {
+public class SearchStudentJPanel extends JPanel implements ItemListener {
     private final JComboBox<String> criteriaJComboBox;
+    private final JPanel cardLayoutJPanel;
 
-    private final JTextField jTextField;
+    private final JTextField fioJTextField;
+    private final JTextField courseJTextField;
+    private final JTextField numberOfToDoTasksJTextField;
+    private final JTextField groupJTextField;
     private final JComboBox<String> numberOfTasksJComboBox;
     private final JComboBox<String> numberOfCompletedTasksJComboBox;
     private final JComboBox<String> programmingLanguagesJComboBox;
 
     public SearchStudentJPanel() {
-        setLayout(new GridLayout(2, 2, 10, 5));
+        super(new GridLayout(2, 1, 10, 5));
 
         criteriaJComboBox = new JComboBox<>(Student.AllCriteria.getAllName());
-        criteriaJComboBox.addActionListener(this);
+        criteriaJComboBox.addItemListener(this);
+        cardLayoutJPanel = new JPanel(new CardLayout());
 
-        jTextField = new JTextField();
+        fioJTextField = new JTextField();
+        courseJTextField = new JTextField();
+        numberOfToDoTasksJTextField = new JTextField();
+        groupJTextField = new JTextField();
+
         numberOfTasksJComboBox = new JComboBox<>();
         numberOfCompletedTasksJComboBox = new JComboBox<>();
         programmingLanguagesJComboBox = new JComboBox<>();
 
-        add(new JLabel("Criteria"));
-        add(new JLabel("Value"));
+        cardLayoutJPanel.add(fioJTextField, Student.AllCriteria.FIO.getName());
+        cardLayoutJPanel.add(courseJTextField, Student.AllCriteria.COURSE.getName());
+        cardLayoutJPanel.add(groupJTextField, Student.AllCriteria.GROUP.getName());
+        cardLayoutJPanel.add(numberOfToDoTasksJTextField, Student.AllCriteria.NUMBER_OF_TO_DO_TASKS.getName());
+        cardLayoutJPanel.add(numberOfCompletedTasksJComboBox, Student.AllCriteria.NUMBER_OF_COMPLETED_TASKS.getName());
+        cardLayoutJPanel.add(numberOfTasksJComboBox, Student.AllCriteria.NUMBER_OF_TASKS.getName());
+        cardLayoutJPanel.add(programmingLanguagesJComboBox, Student.AllCriteria.PROGRAMMING_LANGUAGE.getName());
+        
         add(criteriaJComboBox);
-        add(jTextField);
+        add(cardLayoutJPanel);
     }
 
     public Student.AllCriteria getSelectedCriteria() {
@@ -46,14 +63,21 @@ public class SearchStudentJPanel extends JPanel implements ActionListener {
     }
 
     public String getValueForSearch() {
-        if (Objects.equals(criteriaJComboBox.getSelectedItem(), Student.AllCriteria.NUMBER_OF_TASKS.getName())) {
+        String selectedCriteria = Objects.requireNonNull(criteriaJComboBox.getSelectedItem()).toString();
+        if (selectedCriteria.equals(Student.AllCriteria.NUMBER_OF_TASKS.getName())) {
             return Objects.requireNonNull(numberOfTasksJComboBox.getSelectedItem()).toString();
-        } else if (Objects.equals(criteriaJComboBox.getSelectedItem(), Student.AllCriteria.NUMBER_OF_COMPLETED_TASKS.getName())) {
+        } else if (selectedCriteria.equals(Student.AllCriteria.NUMBER_OF_COMPLETED_TASKS.getName())) {
             return Objects.requireNonNull(numberOfCompletedTasksJComboBox.getSelectedItem()).toString();
-        } else if (Objects.equals(criteriaJComboBox.getSelectedItem(), Student.AllCriteria.PROGRAMMING_LANGUAGE.getName())) {
+        } else if (selectedCriteria.equals(Student.AllCriteria.PROGRAMMING_LANGUAGE.getName())) {
             return Objects.requireNonNull(programmingLanguagesJComboBox.getSelectedItem()).toString();
+        } else if (selectedCriteria.equals(Student.AllCriteria.FIO.getName())) {
+            return fioJTextField.getText();
+        } else if (selectedCriteria.equals(Student.AllCriteria.GROUP.getName())) {
+            return groupJTextField.getText();
+        } else if (selectedCriteria.equals(Student.AllCriteria.COURSE.getName())) {
+            return courseJTextField.getText();
         } else {
-            return jTextField.getText();
+            return numberOfToDoTasksJTextField.getText();
         }
     }
 
@@ -76,19 +100,8 @@ public class SearchStudentJPanel extends JPanel implements ActionListener {
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
-        remove(3);
-        if (Objects.equals(criteriaJComboBox.getSelectedItem(), Student.AllCriteria.NUMBER_OF_TASKS.getName())) {
-            add(numberOfTasksJComboBox);
-        } else if (Objects.equals(criteriaJComboBox.getSelectedItem(), Student.AllCriteria.NUMBER_OF_COMPLETED_TASKS.getName())) {
-            add(numberOfCompletedTasksJComboBox);
-        } else if (Objects.equals(criteriaJComboBox.getSelectedItem(), Student.AllCriteria.PROGRAMMING_LANGUAGE.getName())) {
-            add(programmingLanguagesJComboBox);
-        } else {
-            jTextField.setText("");
-            add(jTextField);
-        }
-        revalidate();
-        repaint();
+    public void itemStateChanged(ItemEvent e) {
+        CardLayout layout = (CardLayout) (cardLayoutJPanel.getLayout());
+        layout.show(cardLayoutJPanel, (String) e.getItem());
     }
 }

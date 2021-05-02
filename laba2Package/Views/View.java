@@ -7,6 +7,7 @@ import laba2Package.Views.CustomDialogs.SearchStudentsDialog;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.nio.file.Paths;
 
 public class View {
     private final JFrame MainFrame;
@@ -25,7 +26,7 @@ public class View {
     private final ViewerOfPages viewerOfPages;
 
     public View() {
-        MainFrame = new JFrame("Students");
+        MainFrame = new JFrame("Таблица студентов");
         MainFrame.setLayout(new BorderLayout(5, 5));
         MainFrame.setBounds(Toolkit.getDefaultToolkit().getScreenSize().width / 2 - 600,
                 Toolkit.getDefaultToolkit().getScreenSize().height / 2 - 400,
@@ -42,7 +43,6 @@ public class View {
         setJToolBar();
 
         MainFrame.setVisible(true);
-        MainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
     public AddStudentDialog getAddStudentDialog() {
@@ -83,24 +83,19 @@ public class View {
         JToolBar jToolBar = new JToolBar();
         jToolBar.setOrientation(SwingConstants.VERTICAL);
 
-        saveJButton = new JButton(new ImageIcon("Pictures//save.png"));
-        saveJButton.setBorderPainted(false);
-        loadJButton = new JButton(new ImageIcon("Pictures//load.png"));
-        loadJButton.setBorderPainted(false);
-        JButton editJButton = new JButton(new ImageIcon("Pictures//edit.png"));
-        editJButton.setBorderPainted(false);
+        saveJButton = new MyButton(Paths.get("Pictures//save.png").toFile());
+        loadJButton = new MyButton(Paths.get("Pictures//load.png").toFile());
+        JButton editJButton = new MyButton(Paths.get("Pictures//edit.png").toFile());
         editJButton.addActionListener(e -> {
             addStudentDialog.setCustomDialogLocation();
             addStudentDialog.setVisible(true);
         });
-        JButton deleteNoteJButton = new JButton(new ImageIcon("Pictures//deleteNote.png"));
-        deleteNoteJButton.setBorderPainted(false);
+        JButton deleteNoteJButton = new MyButton(Paths.get("Pictures//delete-note.png").toFile());
         deleteNoteJButton.addActionListener(e -> {
             deleteStudentsDialog.setCustomDialogLocation();
             deleteStudentsDialog.setVisible(true);
         });
-        JButton searchJButton = new JButton(new ImageIcon("Pictures//search.png"));
-        searchJButton.setBorderPainted(false);
+        JButton searchJButton = new MyButton(Paths.get("Pictures//search.png").toFile());
         searchJButton.addActionListener(e -> {
             searchStudentsDialog.setCustomDialogLocation();
             searchStudentsDialog.setVisible(true);
@@ -122,18 +117,18 @@ public class View {
     private void setJMenuBar() {
         JMenuBar jMenuBar = new JMenuBar();
 
-        JMenu fileJMenu = new JMenu("File");
-        loadListJMenuItem = new JMenuItem("Load students");
-        saveListJMenuItem = new JMenuItem("Save student");
+        JMenu fileJMenu = new JMenu("Файл");
+        loadListJMenuItem = new JMenuItem("Загрузить данные");
+        saveListJMenuItem = new JMenuItem("Сохранить данные");
         fileJMenu.add(loadListJMenuItem);
         fileJMenu.add(saveListJMenuItem);
 
-        JMenu editJMenu = new JMenu("Edit");
-        JMenuItem addNoteJMenuItem = new JMenuItem("Add note");
+        JMenu editJMenu = new JMenu("Редактировать");
+        JMenuItem addNoteJMenuItem = new JMenuItem("Добавить студента");
         addNoteJMenuItem.addActionListener(e -> addStudentDialog.setVisible(true));
-        JMenuItem searchNoteJMenuItem = new JMenuItem("Search notes");
+        JMenuItem searchNoteJMenuItem = new JMenuItem("Поиск студентов");
         searchNoteJMenuItem.addActionListener(e -> searchStudentsDialog.setVisible(true));
-        JMenuItem deleteNoteJMenuItem = new JMenuItem("Delete notes");
+        JMenuItem deleteNoteJMenuItem = new JMenuItem("Удаление студентов");
         deleteNoteJMenuItem.addActionListener(e -> deleteStudentsDialog.setVisible(true));
         editJMenu.add(addNoteJMenuItem);
         editJMenu.add(searchNoteJMenuItem);

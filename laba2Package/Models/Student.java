@@ -22,19 +22,19 @@ public class Student {
 
     public Student(String fio, int course, String group, int numberOfTasks, int numberOfCompletedTasks, String programmingLanguage) throws StudentException {
         if (fio == null || group == null || programmingLanguage == null)
-            throw new StudentException("parameters cant be null");
+            throw new StudentException("Поля не могут быть пустыми!");
         if (numberOfTasks < 0)
-            throw new StudentException("Number of tasks cant be <0");
+            throw new StudentException("Число работ не может быть отрицательным!");
         if (numberOfCompletedTasks < 0 || numberOfCompletedTasks > numberOfTasks)
-            throw new StudentException("Number of completed tasks cant be <0 and >(number of all tasks)");
+            throw new StudentException("Число выполненных работ не может превышать число всех работ или быть отрицательным!");
         if (course <= 0 || course > 5)
-            throw new StudentException("Course cant be <1 and >5");
-        if (!Pattern.compile("\\A([a-zA-Z]+\\s){2}([a-zA-Z]+)\\Z").matcher(fio.trim()).find())
-            throw new StudentException("Incorrect FIO: " + fio);
-        if (!Pattern.compile("\\A([a-zA-Z0-9]+)\\Z").matcher(group.trim()).find())
-            throw new StudentException("Incorrect group: " + group);
+            throw new StudentException("Курс студента должен быть в промежутке от 1 до 5 включительно!");
+        if (!Pattern.compile("\\A([a-zA-Z \\u0400-\\u04FF]+\\s){2}([a-zA-Z\\u0400-\\u04FF]+)\\Z").matcher(fio.trim()).find())
+            throw new StudentException("Неверное ФИО: " + fio);
+        if (!Pattern.compile("\\A([0-9]{6})\\Z").matcher(group.trim()).find())
+            throw new StudentException("Неверная группа: " + group);
         if (!Pattern.compile("\\A(.+)\\Z").matcher(programmingLanguage.trim()).find())
-            throw new StudentException("Incorrect programming language: " + programmingLanguage);
+            throw new StudentException("Неверный язык программирования: " + programmingLanguage);
 
         this.fio = fio;
         this.course = course;

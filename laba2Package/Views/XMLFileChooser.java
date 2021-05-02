@@ -16,7 +16,7 @@ public class XMLFileChooser extends JFileChooser {
     }
 
     public File getPath() {
-        int ret = showDialog(null, "Choose file");
+        int ret = showDialog(null, "Выберите файл");
         if (ret == JFileChooser.APPROVE_OPTION) {
             return getSelectedFile();
         }

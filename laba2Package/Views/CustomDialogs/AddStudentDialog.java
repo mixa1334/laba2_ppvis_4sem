@@ -1,8 +1,11 @@
 package laba2Package.Views.CustomDialogs;
 
+import laba2Package.Views.MyButton;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.nio.file.Paths;
 
 public class AddStudentDialog extends CustomDialog {
     private final JButton addStudentJButton;
@@ -14,9 +17,9 @@ public class AddStudentDialog extends CustomDialog {
     private final JTextField programmingLanguageJTextField;
 
     public AddStudentDialog(JFrame jFrame) {
-        super(jFrame, "Add new student");
-        JPanel jPanel = new JPanel(new GridLayout(3, 4, 10, 5));
-        addStudentJButton = new JButton("add student");
+        super(jFrame, "Добавление студента");
+        JPanel jPanel = new JPanel(new GridLayout(6, 2, 10, 5));
+        addStudentJButton = new MyButton("Добавить студента");
         jPanel.add(new JLabel("ФИО"));
         jPanel.add(fioJTextField = new JTextField());
         jPanel.add(new JLabel("Курс"));
