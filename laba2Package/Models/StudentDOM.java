@@ -56,7 +56,6 @@ public class StudentDOM {
     private static void updateXML(Document document, File file) throws TransformerException {
         Transformer transformer = TransformerFactory.newInstance().newTransformer();
         transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-        transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
         DOMSource domSource = new DOMSource(document);
         StreamResult streamResult = new StreamResult(file);
         transformer.transform(domSource, streamResult);

@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<students>
+  <Student>
+    <fio>Кравцов Михаил Сергеевич</fio>
+    <course>2</course>
+    <group>921703</group>
+    <numberOfTasks>4</numberOfTasks>
+    <numberOfCompletedTasks>2</numberOfCompletedTasks>
+    <programmingLanguage>java</programmingLanguage>
+  </Student>
+  <Student>
+    <fio>Высевка Вячеслав Степанович</fio>
+    <course>5</course>
+    <group>563123</group>
+    <numberOfTasks>12</numberOfTasks>
+    <numberOfCompletedTasks>9</numberOfCompletedTasks>
+    <programmingLanguage>c++</programmingLanguage>
+  </Student>
+  <Student>
+    <fio>Козловский Константин Юрьевич</fio>
+    <course>4</course>
+    <group>789120</group>
+    <numberOfTasks>13</numberOfTasks>
+    <numberOfCompletedTasks>4</numberOfCompletedTasks>
+    <programmingLanguage>c#</programmingLanguage>
+  </Student>
+  <Student>
+    <fio>Горилик Дмитрий Николаевич</fio>
+    <course>3</course>
+    <group>921809</group>
+    <numberOfTasks>9</numberOfTasks>
+    <numberOfCompletedTasks>2</numberOfCompletedTasks>
+    <programmingLanguage>c++</programmingLanguage>
+  </Student>
+  <Student>
+    <fio>Ивановская Виктория Андреевна</fio>
+    <course>4</course>
+    <group>108902</group>
+    <numberOfTasks>4</numberOfTasks>
+    <numberOfCompletedTasks>4</numberOfCompletedTasks>
+    <programmingLanguage>ruby</programmingLanguage>
+  </Student>
+  <Student>
+    <fio>Фоменко Егор андреевич</fio>
+    <course>2</course>
+    <group>108902</group>
+    <numberOfTasks>6</numberOfTasks>
+    <numberOfCompletedTasks>5</numberOfCompletedTasks>
+    <programmingLanguage>dart</programmingLanguage>
+  </Student>
+  <Student>
+    <fio>Тарасова Екатерина Сергеевна</fio>
+    <course>4</course>
+    <group>898451</group>
+    <numberOfTasks>10</numberOfTasks>
+    <numberOfCompletedTasks>1</numberOfCompletedTasks>
+    <programmingLanguage>ruby</programmingLanguage>
+  </Student>
+  <Student>
+    <fio>Гасанов Ренат Валерьевич</fio>
+    <course>3</course>
+    <group>898451</group>
+    <numberOfTasks>9</numberOfTasks>
+    <numberOfCompletedTasks>7</numberOfCompletedTasks>
+    <programmingLanguage>java</programmingLanguage>
+  </Student>
+  <Student>
+    <fio>Василек Анна Александровна</fio>
+    <course>2</course>
+    <group>456102</group>
+    <numberOfTasks>8</numberOfTasks>
+    <numberOfCompletedTasks>8</numberOfCompletedTasks>
+    <programmingLanguage>js</programmingLanguage>
+  </Student>
+  <Student>
+    <fio>Грибовский Арсений Дмитриевич</fio>
+    <course>2</course>
+    <group>921703</group>
+    <numberOfTasks>4</numberOfTasks>
+    <numberOfCompletedTasks>1</numberOfCompletedTasks>
+    <programmingLanguage>java</programmingLanguage>
+  </Student>
+  <Student>
+    <fio>Ду Чи Чан</fio>
+    <course>3</course>
+    <group>921023</group>
+    <numberOfTasks>6</numberOfTasks>
+    <numberOfCompletedTasks>6</numberOfCompletedTasks>
+    <programmingLanguage>c#</programmingLanguage>
+  </Student>
+  <Student>
+    <fio>Капитов Егор Алексеевич</fio>
+    <course>5</course>
+    <group>802301</group>
+    <numberOfTasks>7</numberOfTasks>
+    <numberOfCompletedTasks>5</numberOfCompletedTasks>
+    <programmingLanguage>php</programmingLanguage>
+  </Student>
+  <Student>
+    <fio>Семёнова Варвара Олеговна</fio>
+    <course>5</course>
+    <group>703002</group>
+    <numberOfTasks>6</numberOfTasks>
+    <numberOfCompletedTasks>5</numberOfCompletedTasks>
+    <programmingLanguage>java</programmingLanguage>
+  </Student>
+  <Student>
+    <fio>Горелик Дмитрий Николаевич</fio>
+    <course>4</course>
+    <group>789120</group>
+    <numberOfTasks>5</numberOfTasks>
+    <numberOfCompletedTasks>4</numberOfCompletedTasks>
+    <programmingLanguage>js</programmingLanguage>
+  </Student>
+  <Student>
+    <fio>Лисовский Иван Олегович</fio>
+    <course>4</course>
+    <group>789120</group>
+    <numberOfTasks>4</numberOfTasks>
+    <numberOfCompletedTasks>4</numberOfCompletedTasks>
+    <programmingLanguage>python</programmingLanguage>
+  </Student>
+  <Student>
+    <fio>Грибков Артур Егорович</fio>
+    <course>4</course>
+    <group>789120</group>
+    <numberOfTasks>3</numberOfTasks>
+    <numberOfCompletedTasks>2</numberOfCompletedTasks>
+    <programmingLanguage>python</programmingLanguage>
+  </Student>
+  <Student>
+    <fio>Василевич Данила Дмитриевич</fio>
+    <course>5</course>
+    <group>563123</group>
+    <numberOfTasks>7</numberOfTasks>
+    <numberOfCompletedTasks>6</numberOfCompletedTasks>
+    <programmingLanguage>python</programmingLanguage>
+  </Student>
+  <Student>
+    <fio>Макаревич Матвей Владимирович</fio>
+    <course>2</course>
+    <group>986662</group>
+    <numberOfTasks>1</numberOfTasks>
+    <numberOfCompletedTasks>0</numberOfCompletedTasks>
+    <programmingLanguage>dart</programmingLanguage>
+  </Student>
+  <Student>
+    <fio>Таран Егор Владимирович</fio>
+    <course>3</course>
+    <group>999999</group>
+    <numberOfTasks>2</numberOfTasks>
+    <numberOfCompletedTasks>2</numberOfCompletedTasks>
+    <programmingLanguage>ruby</programmingLanguage>
+  </Student>
+  <Student>
+    <fio>Бохан Мария Андреевна</fio>
+    <course>4</course>
+    <group>789120</group>
+    <numberOfTasks>10</numberOfTasks>
+    <numberOfCompletedTasks>7</numberOfCompletedTasks>
+    <programmingLanguage>c#</programmingLanguage>
+  </Student>
+  <Student>
+    <fio>Грицук Анна Сергеевна</fio>
+    <course>3</course>
+    <group>130006</group>
+    <numberOfTasks>2</numberOfTasks>
+    <numberOfCompletedTasks>1</numberOfCompletedTasks>
+    <programmingLanguage>c#</programmingLanguage>
+  </Student>
+  <Student>
+    <fio>Щуркин Денис Андреевич</fio>
+    <course>3</course>
+    <group>788766</group>
+    <numberOfTasks>8</numberOfTasks>
+    <numberOfCompletedTasks>5</numberOfCompletedTasks>
+    <programmingLanguage>c++</programmingLanguage>
+  </Student>
+  <Student>
+    <fio>Назаров Валентин Сергеевич</fio>
+    <course>5</course>
+    <group>563123</group>
+    <numberOfTasks>3</numberOfTasks>
+    <numberOfCompletedTasks>0</numberOfCompletedTasks>
+    <programmingLanguage>c++</programmingLanguage>
+  </Student>
+  <Student>
+    <fio>Рубинштейн Роман Юльевич</fio>
+    <course>5</course>
+    <group>563123</group>
+    <numberOfTasks>3</numberOfTasks>
+    <numberOfCompletedTasks>2</numberOfCompletedTasks>
+    <programmingLanguage>c#</programmingLanguage>
+  </Student>
+  <Student>
+    <fio>Барановский Виталий Николаевич</fio>
+    <course>4</course>
+    <group>789120</group>
+    <numberOfTasks>6</numberOfTasks>
+    <numberOfCompletedTasks>5</numberOfCompletedTasks>
+    <programmingLanguage>java</programmingLanguage>
+  </Student>
+  <Student>
+    <fio>Киселёв Николай Игоревич</fio>
+    <course>5</course>
+    <group>703002</group>
+    <numberOfTasks>9</numberOfTasks>
+    <numberOfCompletedTasks>7</numberOfCompletedTasks>
+    <programmingLanguage>php</programmingLanguage>
+  </Student>
+  <Student>
+    <fio>Кривопуст Анжелика Олеговна</fio>
+    <course>5</course>
+    <group>703002</group>
+    <numberOfTasks>1</numberOfTasks>
+    <numberOfCompletedTasks>0</numberOfCompletedTasks>
+    <programmingLanguage>python</programmingLanguage>
+  </Student>
+</students>
